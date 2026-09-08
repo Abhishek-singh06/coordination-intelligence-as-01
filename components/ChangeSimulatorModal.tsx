@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { useStore } from '@/lib/store';
 import { StakeholderRole } from '@/lib/types';
 import { formatRoleName } from '@/lib/utils';
-import { X, Play, Zap, Sliders } from 'lucide-react';
+import { X, Play, Zap, Sliders, Sparkles } from 'lucide-react';
 
 interface ChangeSimulatorModalProps {
   isOpen: boolean;
@@ -58,9 +58,39 @@ export const ChangeSimulatorModal: React.FC<ChangeSimulatorModalProps> = ({
     'FIRE_SAFETY_INSPECTOR',
   ];
 
+  const [nlInput, setNlInput] = useState('');
+
+  const handleParseNL = () => {
+    if (!nlInput.trim()) return;
+    const lower = nlInput.toLowerCase();
+    
+    // Simple heuristic parser for AEC intent
+    let matchedTask = tasks.find((t) => lower.includes(t.id.toLowerCase()) || lower.includes(t.title.toLowerCase()));
+    if (!matchedTask) {
+      if (lower.includes('hvac') || lower.includes('duct')) matchedTask = tasks.find((t) => t.id === 'T2');
+      else if (lower.includes('chiller')) matchedTask = tasks.find((t) => t.id === 'T1');
+      else if (lower.includes('lighting') || lower.includes('ceiling')) matchedTask = tasks.find((t) => t.id === 'T4');
+      else matchedTask = tasks[0];
+    }
+    
+    const dayMatch = lower.match(/(\d+)\s*(day|days|d)/);
+    const parsedDays = dayMatch ? parseInt(dayMatch[1], 10) : 5;
+
+    let parsedRole: StakeholderRole = 'CLIENT';
+    if (lower.includes('architect')) parsedRole = 'LEAD_ARCHITECT';
+    else if (lower.includes('mep') || lower.includes('engineer')) parsedRole = 'MEP_CONSULTANT';
+    else if (lower.includes('contractor')) parsedRole = 'GENERAL_CONTRACTOR';
+    else if (lower.includes('vendor')) parsedRole = 'HVAC_VENDOR';
+
+    if (matchedTask) setTargetTaskId(matchedTask.id);
+    setDelayDays(parsedDays);
+    setInitiatorRole(parsedRole);
+    setReason(nlInput);
+  };
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-xs animate-in fade-in duration-200">
-      <div className="bg-aec-card border border-aec-border rounded-2xl max-w-xl w-full p-6 shadow-2xl relative text-slate-100">
+      <div className="bg-aec-card border border-aec-border rounded-2xl max-w-xl w-full p-6 shadow-2xl relative text-slate-100 max-h-[90vh] overflow-y-auto">
         <div className="flex items-center justify-between border-b border-aec-border pb-4 mb-4">
           <div className="flex items-center gap-2.5">
             <div className="h-8 w-8 rounded-lg bg-aec-burgundy/40 border border-aec-rose/40 flex items-center justify-center text-amber-400">
@@ -80,6 +110,31 @@ export const ChangeSimulatorModal: React.FC<ChangeSimulatorModalProps> = ({
             <X className="h-5 w-5" />
           </button>
         </div>
+
+        {/* AI Prompt Input Bar */}
+        <div className="mb-5 bg-aec-bg/80 border border-aec-rose/30 p-3 rounded-xl">
+          <label className="text-[11px] font-bold text-amber-300 uppercase tracking-wider flex items-center gap-1.5 mb-1.5">
+            <Sparkles className="h-3.5 w-3.5 text-amber-400" />
+            <span>AI Natural Language Change Intake</span>
+          </label>
+          <div className="flex gap-2">
+            <input
+              type="text"
+              value={nlInput}
+              onChange={(e) => setNlInput(e.target.value)}
+              placeholder="e.g. Move HVAC ductwork installation by 5 days due to site conflict"
+              className="flex-1 bg-aec-card border border-aec-border rounded-lg px-3 py-1.5 text-xs text-slate-100 focus:outline-none focus:border-amber-400"
+            />
+            <button
+              type="button"
+              onClick={handleParseNL}
+              className="px-3 py-1.5 bg-aec-burgundy hover:bg-aec-rose text-slate-100 font-bold text-xs rounded-lg transition-colors border border-aec-rose/50 shrink-0"
+            >
+              Parse Intent
+            </button>
+          </div>
+        </div>
+
 
         <div className="mb-5">
           <label className="text-xs font-bold text-aec-muted uppercase tracking-wider block mb-2">

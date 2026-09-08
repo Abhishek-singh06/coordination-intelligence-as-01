@@ -88,10 +88,38 @@ export const TaskDetailModal: React.FC = () => {
           </div>
         )}
 
+        {/* Dynamic Causality & Impact Explanation */}
+        <div className="mb-4 bg-aec-bg p-3 rounded-lg border border-aec-border space-y-2 text-xs">
+          <span className="font-bold text-amber-400 uppercase tracking-wider block text-[10px]">
+            Why Affected / Causality Explanation
+          </span>
+          {task.status === 'BLOCKED' ? (
+            <div className="space-y-1 text-slate-300">
+              <p>
+                <strong className="text-rose-300">BLOCKED STATUS:</strong> This activity is currently blocked because an upstream dependency ({upstreamTasks.map(u => u.id).join(', ') || 'root task'}) experienced a schedule shift or holds an unresolved approval gate.
+              </p>
+              {task.blockedReason && (
+                <p className="text-[11px] text-rose-300/90 font-mono bg-aec-darkRed/30 p-1.5 rounded border border-aec-darkRed">
+                  Reason: {task.blockedReason}
+                </p>
+              )}
+            </div>
+          ) : upstreamTasks.length > 0 ? (
+            <p className="text-slate-300">
+              This activity directly succeeds upstream node{upstreamTasks.length > 1 ? 's' : ''}{' '}
+              <strong className="text-amber-300 font-mono">{upstreamTasks.map(u => `${u.id} (${u.title})`).join(', ')}</strong>. Any schedule shift in these predecessors directly impacts this task's start date.
+            </p>
+          ) : (
+            <p className="text-slate-300">
+              This is a root activity in the project DAG. Its start date is anchored to project commencement.
+            </p>
+          )}
+        </div>
+
         <div className="space-y-3 mb-6">
           <div>
             <span className="text-xs font-bold text-aec-muted uppercase tracking-wider block mb-1.5 flex items-center gap-1">
-              <ArrowLeft className="h-3.5 w-3.5 text-amber-400" /> Upstream Dependencies ({upstreamTasks.length})
+              <ArrowLeft className="h-3.5 w-3.5 text-amber-400" /> Upstream Predecessors ({upstreamTasks.length})
             </span>
             <div className="flex flex-wrap gap-1.5">
               {upstreamTasks.length === 0 ? (
@@ -100,7 +128,8 @@ export const TaskDetailModal: React.FC = () => {
                 upstreamTasks.map((u) => (
                   <span
                     key={u.id}
-                    className="text-xs bg-aec-bg text-slate-300 border border-aec-border px-2 py-1 rounded flex items-center gap-1"
+                    onClick={() => setSelectedTaskId(u.id)}
+                    className="text-xs bg-aec-bg text-slate-300 border border-aec-border hover:border-amber-400 cursor-pointer px-2 py-1 rounded flex items-center gap-1 transition-colors"
                   >
                     <strong>{u.id}:</strong> {u.title}
                   </span>
@@ -120,7 +149,8 @@ export const TaskDetailModal: React.FC = () => {
                 downstreamTasks.map((d) => (
                   <span
                     key={d.id}
-                    className={`text-xs border px-2 py-1 rounded flex items-center gap-1 ${
+                    onClick={() => setSelectedTaskId(d.id)}
+                    className={`text-xs border px-2 py-1 rounded flex items-center gap-1 cursor-pointer hover:border-amber-400 transition-colors ${
                       d.status === 'BLOCKED'
                         ? 'bg-aec-darkRed/40 border-aec-darkRed text-rose-300'
                         : 'bg-aec-bg text-slate-300 border-aec-border'

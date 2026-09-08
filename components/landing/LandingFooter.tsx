@@ -54,7 +54,7 @@ export const LandingFooter: React.FC = () => {
         {/* Bottom Row */}
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-slate-500 font-mono">
           <div>
-            © {new Date().getFullYear()} Coordination Intelligence System. Built for AEC professionals.
+            © 2026 Coordination Intelligence System. Built for AEC professionals.
           </div>
           <div className="flex items-center gap-2 text-slate-400">
             <span className="w-2 h-2 rounded-full bg-emerald-400"></span>

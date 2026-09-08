@@ -22,7 +22,7 @@ export const ProjectHeader: React.FC = () => {
             {project.type}
           </span>
           {project.isDemo && (
-            <span className="text-xs font-mono font-bold uppercase tracking-wider text-amber-300 bg-[#323522] px-2 py-0.5 rounded border border-[#81815D]">
+            <span className="text-xs font-mono font-bold uppercase tracking-wider text-slate-100 bg-[#323522] px-2 py-0.5 rounded border border-[#81815D]">
               Official Demo
             </span>
           )}
@@ -50,7 +50,7 @@ export const ProjectHeader: React.FC = () => {
               health.status === 'CRITICAL'
                 ? 'bg-[#340A0E] text-rose-300 border-[#6F2B34]'
                 : health.status === 'AT_RISK'
-                ? 'bg-[#570F1D]/50 text-amber-300 border-[#81815D]'
+                ? 'bg-[#570F1D]/50 text-slate-200 border-[#81815D]'
                 : 'bg-[#323522] text-emerald-400 border-[#81815D]/40'
             }`}
           >

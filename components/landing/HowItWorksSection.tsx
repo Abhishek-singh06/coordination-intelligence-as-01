@@ -18,7 +18,7 @@ export const HowItWorksSection: React.FC = () => {
       title: 'DETECT',
       subtitle: 'Variance Ingestion',
       desc: 'Capture project change requests, site schedule delays, or contractor specification deviations immediately.',
-      icon: <Zap className="w-4 h-4 text-amber-400" />,
+      icon: <Zap className="w-4 h-4 text-slate-100" />,
       badge: 'CHANGE EVENT',
     },
     {
@@ -72,7 +72,7 @@ export const HowItWorksSection: React.FC = () => {
         {/* 5 Stages Grid with Connecting Technical Line */}
         <div className="relative">
           {/* Horizontal Desktop Line */}
-          <div className="hidden lg:block absolute top-1/2 left-8 right-8 h-0.5 bg-gradient-to-r from-emerald-500/40 via-amber-500/40 to-emerald-500/40 -translate-y-12 z-0"></div>
+          <div className="hidden lg:block absolute top-1/2 left-8 right-8 h-0.5 bg-gradient-to-r from-emerald-500/40 via-slate-400/40 to-emerald-500/40 -translate-y-12 z-0"></div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 relative z-10">
             {steps.map((s, idx) => (

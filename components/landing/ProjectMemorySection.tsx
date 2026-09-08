@@ -14,7 +14,7 @@ export const ProjectMemorySection: React.FC = () => {
       case 'CRITICAL':
         return <AlertOctagon className="h-3.5 w-3.5 text-rose-400" />;
       case 'WARNING':
-        return <ShieldAlert className="h-3.5 w-3.5 text-amber-400" />;
+        return <ShieldAlert className="h-3.5 w-3.5 text-slate-100" />;
       default:
         return <Info className="h-3.5 w-3.5 text-emerald-400" />;
     }

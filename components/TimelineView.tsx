@@ -17,7 +17,7 @@ export const TimelineView: React.FC = () => {
     <div className="bg-aec-card border border-aec-border rounded-xl p-5 shadow-lg space-y-4">
       <div className="flex items-center justify-between border-b border-aec-border pb-3">
         <div className="flex items-center gap-2">
-          <Calendar className="h-5 w-5 text-amber-400" />
+          <Calendar className="h-5 w-5 text-slate-100" />
           <h2 className="text-sm font-bold text-slate-100 uppercase tracking-wide">
             Project Critical Path Schedule Timeline
           </h2>
@@ -40,7 +40,7 @@ export const TimelineView: React.FC = () => {
             >
               <div className="flex items-center justify-between gap-3 text-xs">
                 <div className="flex items-center gap-2">
-                  <span className="font-mono font-bold text-amber-400 bg-aec-bg px-1.5 py-0.5 rounded border border-aec-border">
+                  <span className="font-mono font-bold text-slate-100 bg-aec-bg px-1.5 py-0.5 rounded border border-aec-border">
                     {task.id}
                   </span>
                   <h4 className="font-bold text-slate-100">{task.title}</h4>

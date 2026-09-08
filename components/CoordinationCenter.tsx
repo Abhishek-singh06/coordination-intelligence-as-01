@@ -20,7 +20,7 @@ export const CoordinationCenter: React.FC = () => {
       {/* Panel Header */}
       <div className="flex items-center justify-between border-b border-[#81815D]/30 pb-3">
         <div className="flex items-center gap-2">
-          <ShieldAlert className="h-5 w-5 text-amber-300" />
+          <ShieldAlert className="h-5 w-5 text-slate-100" />
           <h2 className="text-sm font-bold text-slate-100 uppercase tracking-wide">
             Coordination Command Center
           </h2>
@@ -33,7 +33,7 @@ export const CoordinationCenter: React.FC = () => {
       {/* 1. Approval Gates Section */}
       <div>
         <div className="flex items-center gap-1.5 text-xs font-bold text-slate-200 uppercase tracking-wider mb-2.5">
-          <CheckSquare className="h-4 w-4 text-amber-300" />
+          <CheckSquare className="h-4 w-4 text-slate-100" />
           <span>Approval Gates ({approvalGates.length})</span>
         </div>
 
@@ -54,7 +54,7 @@ export const CoordinationCenter: React.FC = () => {
               >
                 <div className="flex items-start justify-between gap-3 mb-1.5">
                   <div>
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-amber-300 bg-[#570F1D]/50 px-2 py-0.5 rounded border border-[#81815D]">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-slate-200 bg-[#570F1D]/50 px-2 py-0.5 rounded border border-[#81815D]">
                       {formatRoleName(gate.assignedRole)} Approval
                     </span>
                     <h4 className="text-xs font-bold text-slate-100 mt-1">{gate.title}</h4>

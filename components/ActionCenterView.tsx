@@ -23,7 +23,7 @@ export const ActionCenterView: React.FC = () => {
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-b border-aec-border pb-4">
         <div>
           <h2 className="text-base font-bold text-slate-100 uppercase tracking-wide flex items-center gap-2">
-            <Clock className="h-5 w-5 text-amber-400" />
+            <Clock className="h-5 w-5 text-slate-100" />
             <span>Coordination Action Register ({generalActions.length})</span>
           </h2>
           <p className="text-xs text-aec-muted">
@@ -62,7 +62,7 @@ export const ActionCenterView: React.FC = () => {
             >
               <div className="flex items-start justify-between gap-3 mb-1.5">
                 <div>
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20">
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-slate-100 bg-slate-800/40 px-2 py-0.5 rounded border border-slate-700/50">
                     Assigned to: {formatRoleName(act.assignedRole)}
                   </span>
                   <h4 className="text-xs font-bold text-slate-100 mt-1">{act.title}</h4>

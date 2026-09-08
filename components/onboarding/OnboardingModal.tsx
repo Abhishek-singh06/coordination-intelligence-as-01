@@ -225,7 +225,7 @@ export const OnboardingModal: React.FC = () => {
         {/* Progress Bar */}
         <div className="flex items-center justify-between mb-6 pb-4 border-b border-aec-border">
           <div className="flex items-center gap-2.5">
-            <div className="h-9 w-9 rounded-xl bg-aec-burgundy/40 border border-aec-rose/40 flex items-center justify-center text-amber-400 font-bold">
+            <div className="h-9 w-9 rounded-xl bg-aec-burgundy/40 border border-aec-rose/40 flex items-center justify-center text-slate-100 font-bold">
               <Activity className="h-5 w-5" />
             </div>
             <div>
@@ -233,7 +233,7 @@ export const OnboardingModal: React.FC = () => {
               <p className="text-xs text-aec-muted">Workspace Onboarding Wizard</p>
             </div>
           </div>
-          <span className="text-xs font-mono font-bold text-amber-400 bg-aec-burgundy/30 px-3 py-1 rounded-full border border-aec-rose/30">
+          <span className="text-xs font-mono font-bold text-slate-100 bg-aec-burgundy/30 px-3 py-1 rounded-full border border-aec-rose/30">
             Step {step} of 6
           </span>
         </div>
@@ -241,7 +241,7 @@ export const OnboardingModal: React.FC = () => {
         {/* STEP 1 — WELCOME */}
         {step === 1 && (
           <div className="space-y-6 text-center py-4">
-            <div className="h-16 w-16 bg-aec-burgundy/30 border border-aec-rose/40 rounded-2xl flex items-center justify-center mx-auto text-amber-400 shadow-inner">
+            <div className="h-16 w-16 bg-aec-burgundy/30 border border-aec-rose/40 rounded-2xl flex items-center justify-center mx-auto text-slate-100 shadow-inner">
               <Activity className="h-8 w-8" />
             </div>
 
@@ -387,7 +387,7 @@ export const OnboardingModal: React.FC = () => {
                 className="border border-aec-rose/40 bg-aec-burgundy/20 hover:bg-aec-burgundy/30 p-4 rounded-xl cursor-pointer transition-all flex flex-col justify-between"
               >
                 <div>
-                  <span className="text-[10px] font-bold text-amber-400 uppercase tracking-wider bg-aec-burgundy/40 px-2 py-0.5 rounded border border-aec-rose/30">
+                  <span className="text-[10px] font-bold text-slate-100 uppercase tracking-wider bg-aec-burgundy/40 px-2 py-0.5 rounded border border-aec-rose/30">
                     Recommended Hackathon Demo
                   </span>
                   <h4 className="text-sm font-bold text-slate-100 mt-2 mb-1">
@@ -397,7 +397,7 @@ export const OnboardingModal: React.FC = () => {
                     Preloaded 7-task DAG schedule, 7 stakeholders, and chiller relocation scenario (+6 days shift).
                   </p>
                 </div>
-                <div className="mt-4 text-xs font-bold text-amber-400 flex items-center gap-1">
+                <div className="mt-4 text-xs font-bold text-slate-100 flex items-center gap-1">
                   <span>Load Demo Project</span>
                   <ArrowRight className="h-3.5 w-3.5" />
                 </div>

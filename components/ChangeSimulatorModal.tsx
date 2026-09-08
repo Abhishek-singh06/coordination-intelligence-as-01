@@ -93,7 +93,7 @@ export const ChangeSimulatorModal: React.FC<ChangeSimulatorModalProps> = ({
       <div className="bg-aec-card border border-aec-border rounded-2xl max-w-xl w-full p-6 shadow-2xl relative text-slate-100 max-h-[90vh] overflow-y-auto">
         <div className="flex items-center justify-between border-b border-aec-border pb-4 mb-4">
           <div className="flex items-center gap-2.5">
-            <div className="h-8 w-8 rounded-lg bg-aec-burgundy/40 border border-aec-rose/40 flex items-center justify-center text-amber-400">
+            <div className="h-8 w-8 rounded-lg bg-aec-burgundy/40 border border-aec-rose/40 flex items-center justify-center text-slate-100">
               <Zap className="h-4 w-4" />
             </div>
             <div>
@@ -113,8 +113,8 @@ export const ChangeSimulatorModal: React.FC<ChangeSimulatorModalProps> = ({
 
         {/* AI Prompt Input Bar */}
         <div className="mb-5 bg-aec-bg/80 border border-aec-rose/30 p-3 rounded-xl">
-          <label className="text-[11px] font-bold text-amber-300 uppercase tracking-wider flex items-center gap-1.5 mb-1.5">
-            <Sparkles className="h-3.5 w-3.5 text-amber-400" />
+          <label className="text-[11px] font-bold text-slate-200 uppercase tracking-wider flex items-center gap-1.5 mb-1.5">
+            <Sparkles className="h-3.5 w-3.5 text-slate-100" />
             <span>AI Natural Language Change Intake</span>
           </label>
           <div className="flex gap-2">
@@ -123,7 +123,7 @@ export const ChangeSimulatorModal: React.FC<ChangeSimulatorModalProps> = ({
               value={nlInput}
               onChange={(e) => setNlInput(e.target.value)}
               placeholder="e.g. Move HVAC ductwork installation by 5 days due to site conflict"
-              className="flex-1 bg-aec-card border border-aec-border rounded-lg px-3 py-1.5 text-xs text-slate-100 focus:outline-none focus:border-amber-400"
+              className="flex-1 bg-aec-card border border-aec-border rounded-lg px-3 py-1.5 text-xs text-slate-100 focus:outline-none focus:border-rose-400"
             />
             <button
               type="button"
@@ -147,7 +147,7 @@ export const ChangeSimulatorModal: React.FC<ChangeSimulatorModalProps> = ({
             >
               <div>
                 <div className="flex items-center justify-between mb-1">
-                  <span className="text-xs font-bold text-amber-400 group-hover:text-amber-300">
+                  <span className="text-xs font-bold text-slate-100 group-hover:text-slate-200">
                     Preset 1 (Main Demo)
                   </span>
                   <span className="bg-aec-darkRed/60 text-rose-300 border border-aec-darkRed font-mono text-[11px] px-2 py-0.5 rounded font-bold">
@@ -169,10 +169,10 @@ export const ChangeSimulatorModal: React.FC<ChangeSimulatorModalProps> = ({
             >
               <div>
                 <div className="flex items-center justify-between mb-1">
-                  <span className="text-xs font-bold text-amber-400 group-hover:text-amber-300">
+                  <span className="text-xs font-bold text-slate-100 group-hover:text-slate-200">
                     Preset 2
                   </span>
-                  <span className="bg-amber-500/20 text-amber-300 border border-amber-500/30 font-mono text-[11px] px-2 py-0.5 rounded font-bold">
+                  <span className="bg-rose-950/40 text-rose-200 border border-rose-800/40 font-mono text-[11px] px-2 py-0.5 rounded font-bold">
                     +3 Days
                   </span>
                 </div>
@@ -189,7 +189,7 @@ export const ChangeSimulatorModal: React.FC<ChangeSimulatorModalProps> = ({
 
         <form onSubmit={handleSubmit} className="space-y-4 border-t border-aec-border pt-4">
           <div className="flex items-center gap-1 text-xs font-bold text-aec-muted uppercase tracking-wider mb-1">
-            <Sliders className="h-3.5 w-3.5 text-amber-400" /> Custom Parameters
+            <Sliders className="h-3.5 w-3.5 text-slate-100" /> Custom Parameters
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

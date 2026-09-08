@@ -149,7 +149,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               health.status === 'CRITICAL'
                 ? 'bg-[#340A0E] border-[#6F2B34] text-rose-300 animate-pulse'
                 : health.status === 'AT_RISK'
-                ? 'bg-[#570F1D]/40 border-[#81815D] text-amber-300'
+                ? 'bg-[#570F1D]/40 border-[#81815D] text-slate-100'
                 : 'bg-[#323522] border-[#81815D]/40 text-emerald-400'
             }`}
             title={health.reason}
@@ -157,7 +157,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             {health.status === 'CRITICAL' ? (
               <AlertTriangle className="h-3.5 w-3.5 text-rose-400" />
             ) : health.status === 'AT_RISK' ? (
-              <AlertTriangle className="h-3.5 w-3.5 text-amber-400" />
+              <AlertTriangle className="h-3.5 w-3.5 text-slate-200" />
             ) : (
               <CheckCircle2 className="h-3.5 w-3.5 text-emerald-400" />
             )}

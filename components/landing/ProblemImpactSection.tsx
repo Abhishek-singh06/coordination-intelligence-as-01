@@ -18,8 +18,8 @@ export const ProblemImpactSection: React.FC = () => {
       title: 'MULTIPLE DEPENDENCIES',
       subtitle: 'Downstream DAG Cascade',
       desc: 'MEP routings, frame heights, fabrication tolerances are invalidated.',
-      color: 'border-amber-500/70 text-amber-400 bg-amber-500/10',
-      icon: <Layers className="w-4 h-4 text-amber-400" />,
+      color: 'border-slate-700/50 text-slate-100 bg-slate-800/40',
+      icon: <Layers className="w-4 h-4 text-slate-100" />,
     },
     {
       num: '03',
@@ -137,7 +137,7 @@ export const ProblemImpactSection: React.FC = () => {
               {/* Vertical Connected Process */}
               <div className="space-y-4 relative">
                 {/* Connecting Line */}
-                <div className="absolute left-6 top-6 bottom-6 w-0.5 bg-gradient-to-b from-rose-500 via-amber-500 to-red-500 opacity-40"></div>
+                <div className="absolute left-6 top-6 bottom-6 w-0.5 bg-gradient-to-b from-rose-500 via-slate-400 to-red-500 opacity-40"></div>
 
                 {steps.map((step, idx) => (
                   <div key={step.title} className="relative flex items-start gap-4 group">

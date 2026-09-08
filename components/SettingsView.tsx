@@ -30,7 +30,7 @@ export const SettingsView: React.FC = () => {
   return (
     <div className="bg-aec-card border border-aec-border rounded-xl p-5 shadow-lg space-y-6 max-w-3xl mx-auto">
       <div className="flex items-center gap-2 border-b border-aec-border pb-3">
-        <SettingsIcon className="h-5 w-5 text-amber-400" />
+        <SettingsIcon className="h-5 w-5 text-slate-100" />
         <h2 className="text-sm font-bold text-slate-100 uppercase tracking-wide">
           Workspace Settings & Preferences
         </h2>
@@ -39,7 +39,7 @@ export const SettingsView: React.FC = () => {
       {/* User Profile & Role Switcher */}
       <div className="bg-aec-bg/60 border border-aec-border p-4 rounded-xl space-y-3">
         <div className="flex items-center gap-2 text-xs font-bold text-slate-200">
-          <User className="h-4 w-4 text-amber-400" /> Active User Profile
+          <User className="h-4 w-4 text-slate-100" /> Active User Profile
         </div>
 
         {currentUser && (
@@ -85,7 +85,7 @@ export const SettingsView: React.FC = () => {
           onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
           className="flex items-center gap-2 px-3 py-1.5 bg-aec-burgundy hover:bg-aec-rose text-slate-100 rounded border border-aec-rose/30 text-xs font-semibold"
         >
-          {theme === 'dark' ? <Moon className="h-4 w-4 text-amber-400" /> : <Sun className="h-4 w-4 text-amber-400" />}
+          {theme === 'dark' ? <Moon className="h-4 w-4 text-slate-100" /> : <Sun className="h-4 w-4 text-slate-100" />}
           <span>{theme === 'dark' ? 'Dark Command Center' : 'Light Mode'}</span>
         </button>
       </div>

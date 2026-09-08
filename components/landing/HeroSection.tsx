@@ -220,9 +220,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onWatchDemo }) => {
                 <div className="bg-[#0F1522] border border-white/[0.08] p-2.5 rounded-lg">
                   <div className="flex items-center justify-between text-[10px] font-bold text-slate-400 uppercase tracking-wider">
                     <span>Pending Approvals</span>
-                    <CheckSquare className="h-3 w-3 text-amber-400" />
+                    <CheckSquare className="h-3 w-3 text-slate-100" />
                   </div>
-                  <div className="text-lg font-black font-mono text-amber-400 mt-0.5">
+                  <div className="text-lg font-black font-mono text-slate-100 mt-0.5">
                     {pendingApprovalsCount > 0 ? pendingApprovalsCount : 2}
                   </div>
                   <div className="text-[9px] text-slate-500">Action required</div>
@@ -371,9 +371,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onWatchDemo }) => {
                       </div>
 
                       {/* Event 3 */}
-                      <div className="text-[11px] border-l-2 border-amber-500 pl-2 py-0.5">
+                      <div className="text-[11px] border-l-2 border-slate-700/50 pl-2 py-0.5">
                         <div className="flex items-center justify-between">
-                          <span className="font-bold text-amber-300">Approval required</span>
+                          <span className="font-bold text-slate-100">Approval required</span>
                           <span className="text-[9px] font-mono text-slate-500">5m ago</span>
                         </div>
                         <p className="text-[10px] text-slate-400 leading-tight">

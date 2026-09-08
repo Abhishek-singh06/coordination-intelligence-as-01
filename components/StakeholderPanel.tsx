@@ -42,7 +42,7 @@ export const StakeholderPanel: React.FC = () => {
     <div className="bg-aec-card border border-aec-border rounded-xl p-5 shadow-lg">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-aec-border pb-3 mb-4 gap-3">
         <div className="flex items-center gap-2">
-          <Users className="h-5 w-5 text-amber-400" />
+          <Users className="h-5 w-5 text-slate-100" />
           <div>
             <h2 className="text-sm font-bold text-slate-100 uppercase tracking-wide">
               Stakeholder Responsibility & Impact Matrix
@@ -118,7 +118,7 @@ export const StakeholderPanel: React.FC = () => {
                         <span className="font-medium text-slate-200">{owner?.name || formatRoleName(task.ownerRole)}</span>
                       </div>
                     </td>
-                    <td className="py-2.5 px-3 text-amber-400 font-mono text-[11px]">
+                    <td className="py-2.5 px-3 text-slate-100 font-mono text-[11px] font-semibold">
                       {formatRoleName(task.ownerRole)}
                     </td>
                     <td className="py-2.5 px-3">
@@ -135,7 +135,7 @@ export const StakeholderPanel: React.FC = () => {
                             : task.status === 'BLOCKED'
                             ? 'bg-aec-darkred text-rose-200 border border-aec-rose/50 animate-pulse'
                             : task.status === 'IN_PROGRESS'
-                            ? 'bg-amber-950/80 text-amber-300 border border-amber-800/40'
+                            ? 'bg-rose-950/80 text-rose-200 border border-rose-800/40'
                             : 'bg-slate-800 text-slate-300 border border-slate-700'
                         }`}
                       >
@@ -149,7 +149,7 @@ export const StakeholderPanel: React.FC = () => {
                           <span>Predecessor slip blocked execution. Action required: Resolve upstream delay.</span>
                         </div>
                       ) : isPendingApproval ? (
-                        <div className="text-amber-300 text-[11px]">
+                        <div className="text-slate-200 text-[11px]">
                           Pending Project Manager formal sign-off.
                         </div>
                       ) : (
@@ -197,7 +197,7 @@ export const StakeholderPanel: React.FC = () => {
                 <div className="text-[11px] space-y-1">
                   <div className="flex items-center justify-between text-slate-300 font-medium">
                     <span className="text-aec-muted">Role:</span>
-                    <span className="text-amber-400 font-semibold">{formatRoleName(s.role)}</span>
+                    <span className="text-slate-100 font-semibold">{formatRoleName(s.role)}</span>
                   </div>
                   <div className="text-[10px] text-slate-500 flex items-center gap-1 truncate">
                     <Mail className="h-3 w-3 shrink-0" />
@@ -205,8 +205,8 @@ export const StakeholderPanel: React.FC = () => {
                   </div>
 
                   {isAffected && (
-                    <div className="mt-2 pt-2 border-t border-aec-rose/20 text-[10px] text-amber-300 flex items-start gap-1">
-                      <AlertCircle className="h-3 w-3 text-amber-400 shrink-0 mt-0.5" />
+                    <div className="mt-2 pt-2 border-t border-aec-rose/20 text-[10px] text-slate-200 flex items-start gap-1">
+                      <AlertCircle className="h-3 w-3 text-slate-200 shrink-0 mt-0.5" />
                       <span className="line-clamp-2">{getImpactReason(s.role)}</span>
                     </div>
                   )}

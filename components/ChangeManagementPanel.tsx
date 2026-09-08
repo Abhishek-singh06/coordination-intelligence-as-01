@@ -71,7 +71,7 @@ export const ChangeManagementPanel: React.FC = () => {
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-b border-aec-border pb-4">
         <div>
           <h2 className="text-base font-bold text-slate-100 uppercase tracking-wide flex items-center gap-2">
-            <GitPullRequest className="h-5 w-5 text-amber-400" />
+            <GitPullRequest className="h-5 w-5 text-slate-100" />
             <span>Change Requests & Variance Register ({changeRequests.length})</span>
           </h2>
           <p className="text-xs text-slate-400">
@@ -113,17 +113,17 @@ export const ChangeManagementPanel: React.FC = () => {
             ) : (
               changeRequests.map((cr) => (
                 <tr key={cr.id} className="hover:bg-aec-bg/60 transition-colors">
-                  <td className="py-2.5 px-3 font-mono font-bold text-amber-400">{cr.id}</td>
+                  <td className="py-2.5 px-3 font-mono font-bold text-slate-100">{cr.id}</td>
                   <td className="py-2.5 px-3">
                     <span
                       onClick={() => setSelectedChangeId(cr.id)}
-                      className="font-bold text-slate-100 hover:text-amber-300 cursor-pointer block"
+                      className="font-bold text-slate-100 hover:text-slate-100 cursor-pointer block"
                     >
                       {cr.title}
                     </span>
                     <span className="text-[10px] text-slate-400 line-clamp-1">{cr.reason}</span>
                   </td>
-                  <td className="py-2.5 px-3 font-mono text-amber-400 font-bold">{cr.targetTaskId}</td>
+                  <td className="py-2.5 px-3 font-mono text-slate-100 font-bold">{cr.targetTaskId}</td>
                   <td className="py-2.5 px-3 text-slate-300">{formatRoleName(cr.initiatorRole)}</td>
                   <td className="py-2.5 px-3">
                     <div className="flex flex-col text-[11px]">
@@ -136,7 +136,7 @@ export const ChangeManagementPanel: React.FC = () => {
                       className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase ${
                         cr.priority === 'CRITICAL'
                           ? 'bg-aec-darkRed/60 text-rose-300 border border-aec-darkRed'
-                          : 'bg-amber-500/20 text-amber-400 border border-amber-500/30'
+                          : 'bg-slate-800/40 text-slate-100 border border-slate-700/50'
                       }`}
                     >
                       {cr.priority}
@@ -195,7 +195,7 @@ export const ChangeManagementPanel: React.FC = () => {
             </button>
 
             <div className="flex items-center gap-2">
-              <span className="font-mono text-xs font-bold bg-amber-500/10 text-amber-400 border border-amber-500/30 px-2.5 py-0.5 rounded">
+              <span className="font-mono text-xs font-bold bg-slate-800/40 text-slate-100 border border-slate-700/50 px-2.5 py-0.5 rounded">
                 {selectedChange.id}
               </span>
               <span className="text-xs font-bold uppercase px-2 py-0.5 rounded bg-aec-bg border border-aec-border text-slate-300">

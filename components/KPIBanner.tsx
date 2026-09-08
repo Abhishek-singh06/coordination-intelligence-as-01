@@ -57,7 +57,7 @@ export const KPIBanner: React.FC = () => {
                 coordinationHealthScore >= 80
                   ? 'text-emerald-400'
                   : coordinationHealthScore >= 50
-                  ? 'text-amber-300'
+                  ? 'text-slate-100'
                   : 'text-rose-300'
               }`}
             >
@@ -73,7 +73,7 @@ export const KPIBanner: React.FC = () => {
             coordinationHealthScore >= 80
               ? 'bg-[#111506] text-emerald-400 border-emerald-500/30'
               : coordinationHealthScore >= 50
-              ? 'bg-[#570F1D]/40 text-amber-300 border-[#81815D]'
+              ? 'bg-[#570F1D]/40 text-slate-100 border-[#81815D]'
               : 'bg-[#340A0E] text-rose-300 border-[#6F2B34]'
           }`}
         >
@@ -147,7 +147,7 @@ export const KPIBanner: React.FC = () => {
           <div className="flex items-baseline gap-1.5 mt-0.5">
             <span
               className={`text-xl font-black ${
-                pendingApprovalsCount > 0 ? 'text-amber-300' : 'text-slate-100'
+                pendingApprovalsCount > 0 ? 'text-slate-100' : 'text-slate-100'
               }`}
             >
               {pendingApprovalsCount}
@@ -160,7 +160,7 @@ export const KPIBanner: React.FC = () => {
         </div>
         <div
           className={`h-9 w-9 rounded-lg flex items-center justify-center border ${
-            pendingApprovalsCount > 0 ? 'bg-[#570F1D]/40 text-amber-300 border-[#6F2B34]' : 'bg-[#111506] text-slate-400 border-[#81815D]/30'
+            pendingApprovalsCount > 0 ? 'bg-[#570F1D]/40 text-slate-100 border-[#6F2B34]' : 'bg-[#111506] text-slate-400 border-[#81815D]/30'
           }`}
         >
           <CheckSquare className="h-4 w-4" />

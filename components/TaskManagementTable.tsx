@@ -180,11 +180,11 @@ export const TaskManagementTable: React.FC = () => {
             ) : (
               filteredTasks.map((t) => (
                 <tr key={t.id} className="hover:bg-aec-bg/60 transition-colors">
-                  <td className="py-2.5 px-3 font-mono font-bold text-amber-400">{t.id}</td>
+                  <td className="py-2.5 px-3 font-mono font-bold text-slate-100">{t.id}</td>
                   <td className="py-2.5 px-3">
                     <span
                       onClick={() => setSelectedTaskId(t.id)}
-                      className="font-semibold text-slate-100 hover:text-amber-300 cursor-pointer block"
+                      className="font-semibold text-slate-100 hover:text-slate-100 cursor-pointer block"
                     >
                       {t.title}
                     </span>
@@ -208,7 +208,7 @@ export const TaskManagementTable: React.FC = () => {
                   </td>
                   <td className="py-2.5 px-3">
                     {t.requiresApprovalFrom ? (
-                      <span className="bg-amber-500/10 text-amber-400 border border-amber-500/20 px-2 py-0.5 rounded text-[10px] font-medium">
+                      <span className="bg-slate-800/40 text-slate-100 border border-slate-700/50 px-2 py-0.5 rounded text-[10px] font-medium">
                         {formatRoleName(t.requiresApprovalFrom)}
                       </span>
                     ) : (

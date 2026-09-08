@@ -36,7 +36,7 @@ export function getStatusBadgeClass(status: TaskStatus): string {
     case 'BLOCKED':
       return 'bg-[#340A0E] text-rose-300 border-[#6F2B34] animate-pulse-subtle';
     case 'PENDING_APPROVAL':
-      return 'bg-[#323522] text-amber-300 border-[#81815D]/50';
+      return 'bg-[#323522] text-slate-100 border-[#81815D]/50';
     case 'NOT_STARTED':
       return 'bg-[#111506] text-slate-400 border-[#323522]';
   }
@@ -47,7 +47,7 @@ export function getSeverityBadgeClass(severity: AuditSeverity): string {
     case 'CRITICAL':
       return 'bg-[#340A0E] text-rose-300 border-[#6F2B34]';
     case 'WARNING':
-      return 'bg-[#570F1D]/50 text-amber-300 border-[#81815D]';
+      return 'bg-[#570F1D]/50 text-slate-200 border-[#81815D]';
     case 'INFO':
       return 'bg-[#323522] text-slate-300 border-[#81815D]/40';
   }

@@ -19,7 +19,7 @@ export const ApprovalCenterView: React.FC = () => {
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-b border-aec-border pb-4">
         <div>
           <h2 className="text-base font-bold text-slate-100 uppercase tracking-wide flex items-center gap-2">
-            <CheckSquare className="h-5 w-5 text-amber-400" />
+            <CheckSquare className="h-5 w-5 text-slate-100" />
             <span>Approval Center & Governance Sign-offs ({approvalGates.length})</span>
           </h2>
           <p className="text-xs text-slate-400">
@@ -77,11 +77,11 @@ export const ApprovalCenterView: React.FC = () => {
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-2">
                 <div>
                   <div className="flex items-center gap-2">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-slate-100 bg-slate-800/40 px-2 py-0.5 rounded border border-slate-700/50">
                       {formatRoleName(gate.assignedRole)} Sign-off
                     </span>
                     {gate.unblocksTaskId && (
-                      <span className="text-[10px] font-mono text-amber-300 bg-aec-burgundy/30 px-2 py-0.5 rounded border border-aec-rose/30">
+                      <span className="text-[10px] font-mono text-slate-100 bg-aec-burgundy/30 px-2 py-0.5 rounded border border-aec-rose/30">
                         Unblocks Task [{gate.unblocksTaskId}]
                       </span>
                     )}

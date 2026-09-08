@@ -141,7 +141,7 @@ export const RealScenarioSection: React.FC = () => {
                 {/* 2. Activities Affected */}
                 <div className="flex items-center justify-between p-3 rounded-lg bg-[#0F1624] border border-white/[0.05]">
                   <div className="flex items-center gap-3">
-                    <div className="p-2 rounded bg-amber-500/10 text-amber-400">
+                    <div className="p-2 rounded bg-slate-800/40 text-slate-100">
                       <GitBranch className="w-4 h-4" />
                     </div>
                     <div>
@@ -149,7 +149,7 @@ export const RealScenarioSection: React.FC = () => {
                       <div className="text-[10px] text-slate-400">Downstream critical path</div>
                     </div>
                   </div>
-                  <span className="text-base font-black font-mono text-amber-400">
+                  <span className="text-base font-black font-mono text-slate-100">
                     {blockedTasks.length > 0 ? blockedTasks.length : 5}
                   </span>
                 </div>

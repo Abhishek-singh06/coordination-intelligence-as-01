@@ -15,9 +15,9 @@ export const ProjectMemoryAudit: React.FC = () => {
       case 'CRITICAL':
         return <AlertOctagon className="h-4 w-4 text-rose-400" />;
       case 'WARNING':
-        return <ShieldAlert className="h-4 w-4 text-amber-400" />;
+        return <ShieldAlert className="h-4 w-4 text-slate-100" />;
       default:
-        return <Info className="h-4 w-4 text-amber-300" />;
+        return <Info className="h-4 w-4 text-slate-100" />;
     }
   };
 
@@ -25,7 +25,7 @@ export const ProjectMemoryAudit: React.FC = () => {
     <div className="bg-aec-card border border-aec-border rounded-xl p-5 shadow-lg">
       <div className="flex items-center justify-between border-b border-aec-border pb-3 mb-4">
         <div className="flex items-center gap-2">
-          <History className="h-5 w-5 text-amber-400" />
+          <History className="h-5 w-5 text-slate-100" />
           <h2 className="text-sm font-bold text-slate-100 uppercase tracking-wide">
             Project Memory & Audit Trail
           </h2>
@@ -60,7 +60,7 @@ export const ProjectMemoryAudit: React.FC = () => {
               <div className="text-[11px] text-slate-400 flex items-center gap-2 mb-1">
                 <span>Actor: <strong className="text-slate-300">{entry.actor}</strong></span>
                 <span className="text-slate-600">•</span>
-                <span>Role: <strong className="text-amber-400">{entry.role.replace(/_/g, ' ')}</strong></span>
+                <span>Role: <strong className="text-slate-100">{entry.role.replace(/_/g, ' ')}</strong></span>
               </div>
 
               {entry.details && (

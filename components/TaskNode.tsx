@@ -21,7 +21,7 @@ export const TaskNode: React.FC<TaskNodeProps> = ({ task, isSelected, onClick })
       case 'BLOCKED':
         return <AlertOctagon className="h-3.5 w-3.5 text-rose-300" />;
       case 'PENDING_APPROVAL':
-        return <Lock className="h-3.5 w-3.5 text-amber-300" />;
+        return <Lock className="h-3.5 w-3.5 text-slate-200" />;
       case 'NOT_STARTED':
         return <Clock className="h-3.5 w-3.5 text-slate-500" />;
     }
@@ -71,7 +71,7 @@ export const TaskNode: React.FC<TaskNodeProps> = ({ task, isSelected, onClick })
       <p className="text-[11px] text-slate-300 flex items-center justify-between">
         <span className="truncate">{formatRoleName(task.ownerRole)}</span>
         {task.requiresApprovalFrom && (
-          <span className="text-[10px] bg-[#570F1D]/50 text-amber-300 px-1.5 py-0.2 rounded border border-[#81815D]">
+          <span className="text-[10px] bg-[#570F1D]/50 text-slate-200 px-1.5 py-0.2 rounded border border-[#81815D]">
             Approval Gate
           </span>
         )}

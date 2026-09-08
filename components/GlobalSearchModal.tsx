@@ -43,7 +43,7 @@ export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({ isOpen, on
     <div className="fixed inset-0 z-50 flex items-start justify-center pt-16 p-4 bg-black/75 backdrop-blur-xs animate-in fade-in duration-200">
       <div className="bg-aec-card border border-aec-border rounded-xl max-w-2xl w-full p-4 shadow-2xl relative text-slate-100 space-y-4">
         <div className="flex items-center gap-2 border-b border-aec-border pb-3">
-          <Search className="h-5 w-5 text-amber-400" />
+          <Search className="h-5 w-5 text-slate-100" />
           <input
             type="text"
             autoFocus
@@ -67,7 +67,7 @@ export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({ isOpen, on
             {matchingTasks.length > 0 && (
               <div>
                 <span className="font-bold text-aec-muted uppercase tracking-wider block mb-1.5 flex items-center gap-1">
-                  <Table className="h-3.5 w-3.5 text-amber-400" /> Tasks ({matchingTasks.length})
+                  <Table className="h-3.5 w-3.5 text-slate-100" /> Tasks ({matchingTasks.length})
                 </span>
                 <div className="space-y-1">
                   {matchingTasks.map((t) => (
@@ -81,7 +81,7 @@ export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({ isOpen, on
                       className="p-2 bg-aec-bg/60 border border-aec-border hover:border-aec-rose rounded cursor-pointer flex items-center justify-between"
                     >
                       <span>
-                        <strong className="text-amber-400 font-mono">{t.id}:</strong> {t.title}
+                        <strong className="text-slate-100 font-mono">{t.id}:</strong> {t.title}
                       </span>
                       <span className="text-slate-400">{formatRoleName(t.ownerRole)}</span>
                     </div>
@@ -94,7 +94,7 @@ export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({ isOpen, on
             {matchingChanges.length > 0 && (
               <div>
                 <span className="font-bold text-aec-muted uppercase tracking-wider block mb-1.5 flex items-center gap-1">
-                  <GitPullRequest className="h-3.5 w-3.5 text-amber-400" /> Change Orders ({matchingChanges.length})
+                  <GitPullRequest className="h-3.5 w-3.5 text-slate-100" /> Change Orders ({matchingChanges.length})
                 </span>
                 <div className="space-y-1">
                   {matchingChanges.map((c) => (
@@ -108,7 +108,7 @@ export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({ isOpen, on
                       className="p-2 bg-aec-bg/60 border border-aec-border hover:border-aec-rose rounded cursor-pointer flex items-center justify-between"
                     >
                       <span>
-                        <strong className="text-amber-400 font-mono">{c.id}:</strong> {c.title}
+                        <strong className="text-slate-100 font-mono">{c.id}:</strong> {c.title}
                       </span>
                       <span className="text-slate-400">+{c.delayDays}d</span>
                     </div>
@@ -145,7 +145,7 @@ export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({ isOpen, on
             {matchingStakeholders.length > 0 && (
               <div>
                 <span className="font-bold text-aec-muted uppercase tracking-wider block mb-1.5 flex items-center gap-1">
-                  <Users className="h-3.5 w-3.5 text-amber-300" /> Stakeholders ({matchingStakeholders.length})
+                  <Users className="h-3.5 w-3.5 text-slate-100" /> Stakeholders ({matchingStakeholders.length})
                 </span>
                 <div className="space-y-1">
                   {matchingStakeholders.map((s) => (
@@ -158,7 +158,7 @@ export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({ isOpen, on
                       className="p-2 bg-aec-bg/60 border border-aec-border hover:border-aec-rose rounded cursor-pointer flex items-center justify-between"
                     >
                       <span>{s.name} ({s.organization})</span>
-                      <span className="text-amber-400 font-semibold">{formatRoleName(s.role)}</span>
+                      <span className="text-slate-100 font-semibold">{formatRoleName(s.role)}</span>
                     </div>
                   ))}
                 </div>

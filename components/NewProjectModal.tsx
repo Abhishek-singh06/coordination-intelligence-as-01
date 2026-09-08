@@ -57,7 +57,7 @@ export const NewProjectModal: React.FC<NewProjectModalProps> = ({ isOpen, onClos
         </button>
 
         <div className="flex items-center gap-2 mb-4">
-          <Building2 className="h-5 w-5 text-amber-400" />
+          <Building2 className="h-5 w-5 text-slate-100" />
           <h3 className="text-base font-bold">Create New AEC Project Workspace</h3>
         </div>
 

@@ -70,7 +70,7 @@ export const NewProjectModal: React.FC<NewProjectModalProps> = ({ isOpen, onClos
               placeholder="e.g. Orion Business Center"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="w-full bg-aec-bg border border-aec-border rounded px-3 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-aec-rose"
+              className="w-full bg-aec-bg border border-aec-border rounded px-3 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-aec-blue"
             />
           </div>
 
@@ -80,7 +80,7 @@ export const NewProjectModal: React.FC<NewProjectModalProps> = ({ isOpen, onClos
               <select
                 value={type}
                 onChange={(e) => setType(e.target.value as ProjectType)}
-                className="w-full bg-aec-bg border border-aec-border rounded px-2.5 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-aec-rose"
+                className="w-full bg-aec-bg border border-aec-border rounded px-2.5 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-aec-blue"
               >
                 {projectTypes.map((t) => (
                   <option key={t} value={t}>
@@ -96,7 +96,7 @@ export const NewProjectModal: React.FC<NewProjectModalProps> = ({ isOpen, onClos
                 min="1"
                 value={floors}
                 onChange={(e) => setFloors(parseInt(e.target.value) || 1)}
-                className="w-full bg-aec-bg border border-aec-border rounded px-3 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-aec-rose"
+                className="w-full bg-aec-bg border border-aec-border rounded px-3 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-aec-blue"
               />
             </div>
           </div>
@@ -108,7 +108,7 @@ export const NewProjectModal: React.FC<NewProjectModalProps> = ({ isOpen, onClos
               placeholder="e.g. Tower 3, CBD"
               value={location}
               onChange={(e) => setLocation(e.target.value)}
-              className="w-full bg-aec-bg border border-aec-border rounded px-3 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-aec-rose"
+              className="w-full bg-aec-bg border border-aec-border rounded px-3 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-aec-blue"
             />
           </div>
 
@@ -118,7 +118,7 @@ export const NewProjectModal: React.FC<NewProjectModalProps> = ({ isOpen, onClos
               type="date"
               value={startDate}
               onChange={(e) => setStartDate(e.target.value)}
-              className="w-full bg-aec-bg border border-aec-border rounded px-3 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-aec-rose"
+              className="w-full bg-aec-bg border border-aec-border rounded px-3 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-aec-blue"
             />
           </div>
 
@@ -132,7 +132,7 @@ export const NewProjectModal: React.FC<NewProjectModalProps> = ({ isOpen, onClos
             </button>
             <button
               type="submit"
-              className="px-4 py-1.5 bg-aec-burgundy hover:bg-aec-rose text-slate-100 font-bold rounded text-xs border border-aec-rose/30"
+              className="px-4 py-1.5 bg-aec-blue hover:bg-aec-blue-light text-slate-100 font-bold rounded text-xs border border-aec-blue/30"
             >
               Initialize Project
             </button>

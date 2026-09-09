@@ -20,6 +20,7 @@ export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({ isOpen, on
     setSelectedTaskId,
     setSelectedChangeId,
     setActiveTab,
+    setProjectSubTab,
   } = useStore();
 
   const [query, setQuery] = useState('');
@@ -75,7 +76,8 @@ export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({ isOpen, on
                       key={t.id}
                       onClick={() => {
                         setSelectedTaskId(t.id);
-                        setActiveTab('tasks');
+                        setActiveTab('project');
+                        setProjectSubTab('tasks');
                         onClose();
                       }}
                       className="p-2 bg-aec-bg/60 border border-aec-border hover:border-aec-rose rounded cursor-pointer flex items-center justify-between"
@@ -128,7 +130,8 @@ export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({ isOpen, on
                     <div
                       key={a.id}
                       onClick={() => {
-                        setActiveTab('approvals');
+                        setActiveTab('project');
+                        setProjectSubTab('approvals');
                         onClose();
                       }}
                       className="p-2 bg-aec-bg/60 border border-aec-border hover:border-emerald-500 rounded cursor-pointer flex items-center justify-between"
@@ -152,7 +155,8 @@ export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({ isOpen, on
                     <div
                       key={s.id}
                       onClick={() => {
-                        setActiveTab('stakeholders');
+                        setActiveTab('project');
+                        setProjectSubTab('stakeholders');
                         onClose();
                       }}
                       className="p-2 bg-aec-bg/60 border border-aec-border hover:border-aec-rose rounded cursor-pointer flex items-center justify-between"

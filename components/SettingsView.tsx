@@ -61,7 +61,7 @@ export const SettingsView: React.FC = () => {
               <select
                 value={currentUser.role}
                 onChange={(e) => setCurrentUserRole(e.target.value as StakeholderRole)}
-                className="bg-aec-bg border border-aec-border rounded px-2.5 py-1 text-xs text-slate-200 focus:outline-none focus:border-aec-rose"
+                className="bg-aec-bg border border-aec-border rounded px-2.5 py-1 text-xs text-slate-200 focus:outline-none focus:border-aec-blue"
               >
                 {roleOptions.map((r) => (
                   <option key={r} value={r}>
@@ -83,7 +83,7 @@ export const SettingsView: React.FC = () => {
 
         <button
           onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-          className="flex items-center gap-2 px-3 py-1.5 bg-aec-burgundy hover:bg-aec-rose text-slate-100 rounded border border-aec-rose/30 text-xs font-semibold"
+          className="flex items-center gap-2 px-3 py-1.5 bg-aec-blue hover:bg-aec-blue-light text-slate-100 rounded border border-aec-blue/30 text-xs font-semibold"
         >
           {theme === 'dark' ? <Moon className="h-4 w-4 text-slate-100" /> : <Sun className="h-4 w-4 text-slate-100" />}
           <span>{theme === 'dark' ? 'Dark Command Center' : 'Light Mode'}</span>
@@ -105,7 +105,7 @@ export const SettingsView: React.FC = () => {
           </div>
           <button
             onClick={resetDemoScenario}
-            className="flex items-center gap-1.5 px-3 py-1.5 bg-aec-burgundy hover:bg-aec-rose text-slate-100 text-xs font-bold rounded border border-aec-rose/30 shrink-0"
+            className="flex items-center gap-1.5 px-3 py-1.5 bg-aec-blue hover:bg-aec-blue-light text-slate-100 text-xs font-bold rounded border border-aec-blue/30 shrink-0"
           >
             <RotateCcw className="h-3.5 w-3.5" />
             <span>Reset Demo</span>
@@ -114,14 +114,14 @@ export const SettingsView: React.FC = () => {
 
         <div className="flex items-center justify-between gap-4 pt-2 border-t border-aec-border">
           <div>
-            <h5 className="text-xs font-bold text-rose-300">Reset Entire Workspace</h5>
+            <h5 className="text-xs font-bold text-red-300">Reset Entire Workspace</h5>
             <p className="text-[11px] text-aec-muted">
               Clears user profile, custom projects, and onboarding state to start completely fresh.
             </p>
           </div>
           <button
             onClick={resetWorkspace}
-            className="flex items-center gap-1.5 px-3 py-1.5 bg-aec-darkRed/80 hover:bg-aec-darkRed text-rose-200 text-xs font-bold rounded border border-aec-rose/40 shrink-0"
+            className="flex items-center gap-1.5 px-3 py-1.5 bg-red-950/80 hover:bg-red-900 text-red-200 text-xs font-bold rounded border border-red-800/40 shrink-0"
           >
             <Trash2 className="h-3.5 w-3.5" />
             <span>Reset Workspace</span>

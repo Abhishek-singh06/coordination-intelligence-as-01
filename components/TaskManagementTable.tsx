@@ -4,13 +4,12 @@ import React, { useState } from 'react';
 import { useStore } from '@/lib/store';
 import { TaskNode, TaskStatus, StakeholderRole } from '@/lib/types';
 import { formatRoleName, getStatusBadgeClass } from '@/lib/utils';
-import { Plus, Edit2, Trash2, Shield, Search, Filter, AlertOctagon, CheckCircle2, Clock, Lock } from 'lucide-react';
+import { Plus, Edit2, Trash2, Search, Filter } from 'lucide-react';
 
 export const TaskManagementTable: React.FC = () => {
-  const { getCurrentTasks, createTask, updateTask, deleteTask, setSelectedTaskId, getCurrentDependencies } = useStore();
+  const { getCurrentTasks, createTask, updateTask, deleteTask, setSelectedTaskId } = useStore();
 
   const tasks = getCurrentTasks();
-  const dependencies = getCurrentDependencies();
 
   const [filterStatus, setFilterStatus] = useState<string>('ALL');
   const [searchTerm, setSearchTerm] = useState('');
@@ -104,21 +103,21 @@ export const TaskManagementTable: React.FC = () => {
   ];
 
   return (
-    <div className="bg-aec-card border border-aec-border rounded-xl p-5 shadow-lg space-y-4">
+    <div className="bg-[#0A0F16] border border-[#1B2735] rounded-2xl p-5 shadow-xl space-y-4">
       {/* Header controls */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-b border-aec-border pb-4">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-b border-[#1B2735] pb-4">
         <div>
-          <h2 className="text-base font-bold text-slate-100 uppercase tracking-wide">
+          <h2 className="text-base font-bold text-white uppercase tracking-wide font-sans">
             Project Tasks & Activities Register ({tasks.length})
           </h2>
-          <p className="text-xs text-aec-muted">
+          <p className="text-xs text-[#6F7B88]">
             Manage activity owners, duration, slack buffers, and approval gates.
           </p>
         </div>
 
         <button
           onClick={handleOpenCreate}
-          className="flex items-center gap-1.5 px-3.5 py-1.5 bg-aec-burgundy hover:bg-aec-rose text-slate-100 text-xs font-bold rounded-lg transition-colors border border-aec-rose/30 shadow-sm"
+          className="flex items-center gap-1.5 px-4 py-2 bg-[#1E5A91] hover:bg-[#2F80ED] text-white text-xs font-bold rounded-xl transition-colors border border-[#2F80ED]/40 shadow-md cursor-pointer"
         >
           <Plus className="h-4 w-4" />
           <span>Create Task</span>
@@ -128,22 +127,22 @@ export const TaskManagementTable: React.FC = () => {
       {/* Filter and Search Bar */}
       <div className="flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
         <div className="relative w-full sm:w-64">
-          <Search className="h-3.5 w-3.5 absolute left-3 top-2.5 text-aec-muted" />
+          <Search className="h-3.5 w-3.5 absolute left-3 top-2.5 text-[#6F7B88]" />
           <input
             type="text"
             placeholder="Search by title, ID, role..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full bg-aec-bg border border-aec-border rounded-lg pl-8 pr-3 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-aec-rose"
+            className="w-full bg-[#05070A] border border-[#1B2735] rounded-xl pl-8 pr-3 py-2 text-xs text-white focus:outline-none focus:border-[#2F80ED]"
           />
         </div>
 
         <div className="flex items-center gap-2 w-full sm:w-auto">
-          <Filter className="h-3.5 w-3.5 text-aec-muted" />
+          <Filter className="h-3.5 w-3.5 text-[#6F7B88]" />
           <select
             value={filterStatus}
             onChange={(e) => setFilterStatus(e.target.value)}
-            className="bg-aec-bg border border-aec-border rounded-lg px-2.5 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-aec-rose"
+            className="bg-[#05070A] border border-[#1B2735] rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-[#2F80ED]"
           >
             <option value="ALL">All Statuses ({tasks.length})</option>
             <option value="COMPLETED">Completed</option>
@@ -156,10 +155,10 @@ export const TaskManagementTable: React.FC = () => {
       </div>
 
       {/* Dense Enterprise Data Table */}
-      <div className="overflow-x-auto rounded-lg border border-aec-border">
+      <div className="overflow-x-auto rounded-xl border border-[#1B2735]">
         <table className="w-full text-left border-collapse text-xs">
           <thead>
-            <tr className="bg-aec-bg/80 text-slate-400 border-b border-aec-border font-mono text-[11px] uppercase">
+            <tr className="bg-[#05070A] text-[#6F7B88] border-b border-[#1B2735] font-mono text-[11px] uppercase">
               <th className="py-2.5 px-3">ID</th>
               <th className="py-2.5 px-3">Task Activity Title</th>
               <th className="py-2.5 px-3">Owner Role</th>
@@ -170,27 +169,27 @@ export const TaskManagementTable: React.FC = () => {
               <th className="py-2.5 px-3 text-right">Actions</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-aec-border/60 font-sans">
+          <tbody className="divide-y divide-[#1B2735]/60 text-[#A7B0BC]">
             {filteredTasks.length === 0 ? (
               <tr>
-                <td colSpan={8} className="py-6 text-center text-aec-muted italic">
+                <td colSpan={8} className="py-6 text-center text-[#6F7B88] italic">
                   No task activities match the filter criteria.
                 </td>
               </tr>
             ) : (
               filteredTasks.map((t) => (
-                <tr key={t.id} className="hover:bg-aec-bg/60 transition-colors">
-                  <td className="py-2.5 px-3 font-mono font-bold text-slate-100">{t.id}</td>
+                <tr key={t.id} className="hover:bg-[#05070A]/50 transition-colors">
+                  <td className="py-2.5 px-3 font-mono font-bold text-white">{t.id}</td>
                   <td className="py-2.5 px-3">
                     <span
                       onClick={() => setSelectedTaskId(t.id)}
-                      className="font-semibold text-slate-100 hover:text-slate-100 cursor-pointer block"
+                      className="font-semibold text-white hover:text-[#2F80ED] cursor-pointer block"
                     >
                       {t.title}
                     </span>
-                    <span className="text-[10px] text-slate-400 line-clamp-1">{t.description}</span>
+                    <span className="text-[10px] text-[#6F7B88] line-clamp-1">{t.description}</span>
                   </td>
-                  <td className="py-2.5 px-3 text-slate-300 font-medium">{formatRoleName(t.ownerRole)}</td>
+                  <td className="py-2.5 px-3 text-[#A7B0BC] font-medium">{formatRoleName(t.ownerRole)}</td>
                   <td className="py-2.5 px-3">
                     <span
                       className={`inline-flex items-center gap-1 border px-2 py-0.5 rounded-full text-[10px] font-bold uppercase ${getStatusBadgeClass(
@@ -200,33 +199,33 @@ export const TaskManagementTable: React.FC = () => {
                       {t.status.replace('_', ' ')}
                     </span>
                   </td>
-                  <td className="py-2.5 px-3 font-mono text-slate-300">{t.plannedDays} Days</td>
+                  <td className="py-2.5 px-3 font-mono text-white">{t.plannedDays} Days</td>
                   <td className="py-2.5 px-3 font-mono">
-                    <span className={t.slackDays > 0 ? 'text-emerald-400 font-semibold' : 'text-slate-500'}>
+                    <span className={t.slackDays > 0 ? 'text-emerald-400 font-semibold' : 'text-[#6F7B88]'}>
                       {t.slackDays} Days
                     </span>
                   </td>
                   <td className="py-2.5 px-3">
                     {t.requiresApprovalFrom ? (
-                      <span className="bg-slate-800/40 text-slate-100 border border-slate-700/50 px-2 py-0.5 rounded text-[10px] font-medium">
+                      <span className="bg-[#0B1F3A] text-white border border-[#1E5A91] px-2 py-0.5 rounded-md text-[10px] font-medium">
                         {formatRoleName(t.requiresApprovalFrom)}
                       </span>
                     ) : (
-                      <span className="text-slate-600 italic">—</span>
+                      <span className="text-[#6F7B88] italic">—</span>
                     )}
                   </td>
                   <td className="py-2.5 px-3 text-right">
                     <div className="flex items-center justify-end gap-1">
                       <button
                         onClick={() => handleOpenEdit(t)}
-                        className="p-1 rounded text-slate-400 hover:text-slate-200 hover:bg-aec-bg border border-transparent hover:border-aec-border"
+                        className="p-1.5 rounded-lg text-[#A7B0BC] hover:text-white hover:bg-[#05070A] border border-transparent hover:border-[#1B2735]"
                         title="Edit Task"
                       >
                         <Edit2 className="h-3.5 w-3.5" />
                       </button>
                       <button
                         onClick={() => deleteTask(t.id)}
-                        className="p-1 rounded text-slate-400 hover:text-rose-400 hover:bg-aec-bg border border-transparent hover:border-aec-border"
+                        className="p-1.5 rounded-lg text-[#A7B0BC] hover:text-red-400 hover:bg-[#05070A] border border-transparent hover:border-[#1B2735]"
                         title="Delete Task"
                       >
                         <Trash2 className="h-3.5 w-3.5" />
@@ -243,44 +242,44 @@ export const TaskManagementTable: React.FC = () => {
       {/* Task Modal (Create / Edit) */}
       {isModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-xs">
-          <div className="bg-aec-card border border-aec-border rounded-xl max-w-lg w-full p-5 shadow-2xl text-slate-100">
-            <h3 className="text-base font-bold mb-4 border-b border-aec-border pb-2">
+          <div className="bg-[#0A0F16] border border-[#1B2735] rounded-2xl max-w-lg w-full p-6 shadow-2xl text-white space-y-4">
+            <h3 className="text-base font-bold border-b border-[#1B2735] pb-2">
               {editingTask ? `Edit Task [${editingTask.id}]` : 'Create New Activity Task'}
             </h3>
 
             <form onSubmit={handleSubmit} className="space-y-3">
               <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1">Task Title *</label>
+                <label className="block text-xs font-bold text-[#A7B0BC] uppercase mb-1">Task Title *</label>
                 <input
                   type="text"
                   required
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
-                  className="w-full bg-aec-bg border border-aec-border rounded px-3 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-aec-rose"
+                  className="w-full bg-[#05070A] border border-[#1B2735] focus:border-[#2F80ED] rounded-xl px-3 py-2 text-xs text-white focus:outline-none"
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-semibold text-slate-300 mb-1">Owner Role</label>
+                  <label className="block text-xs font-bold text-[#A7B0BC] uppercase mb-1">Owner Role</label>
                   <select
                     value={ownerRole}
                     onChange={(e) => setOwnerRole(e.target.value as StakeholderRole)}
-                    className="w-full bg-aec-bg border border-aec-border rounded px-2.5 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-aec-rose"
+                    className="w-full bg-[#05070A] border border-[#1B2735] focus:border-[#2F80ED] rounded-xl px-2.5 py-2 text-xs text-white focus:outline-none"
                   >
                     {roleOptions.map((r) => (
-                      <option key={r} value={r}>
+                      <option key={r} value={r} className="bg-[#0A0F16]">
                         {formatRoleName(r)}
                       </option>
                     ))}
                   </select>
                 </div>
                 <div>
-                  <label className="block text-xs font-semibold text-slate-300 mb-1">Status</label>
+                  <label className="block text-xs font-bold text-[#A7B0BC] uppercase mb-1">Status</label>
                   <select
                     value={status}
                     onChange={(e) => setStatus(e.target.value as TaskStatus)}
-                    className="w-full bg-aec-bg border border-aec-border rounded px-2.5 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-aec-rose"
+                    className="w-full bg-[#05070A] border border-[#1B2735] focus:border-[#2F80ED] rounded-xl px-2.5 py-2 text-xs text-white focus:outline-none"
                   >
                     <option value="NOT_STARTED">NOT_STARTED</option>
                     <option value="IN_PROGRESS">IN_PROGRESS</option>
@@ -293,34 +292,34 @@ export const TaskManagementTable: React.FC = () => {
 
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-semibold text-slate-300 mb-1">Planned Days</label>
+                  <label className="block text-xs font-bold text-[#A7B0BC] uppercase mb-1">Planned Days</label>
                   <input
                     type="number"
                     min="1"
                     value={plannedDays}
                     onChange={(e) => setPlannedDays(parseInt(e.target.value) || 1)}
-                    className="w-full bg-aec-bg border border-aec-border rounded px-3 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-aec-rose"
+                    className="w-full bg-[#05070A] border border-[#1B2735] focus:border-[#2F80ED] rounded-xl px-3 py-2 text-xs text-white focus:outline-none"
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-semibold text-slate-300 mb-1">Slack Days</label>
+                  <label className="block text-xs font-bold text-[#A7B0BC] uppercase mb-1">Slack Days</label>
                   <input
                     type="number"
                     min="0"
                     value={slackDays}
                     onChange={(e) => setSlackDays(parseInt(e.target.value) || 0)}
-                    className="w-full bg-aec-bg border border-aec-border rounded px-3 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-aec-rose"
+                    className="w-full bg-[#05070A] border border-[#1B2735] focus:border-[#2F80ED] rounded-xl px-3 py-2 text-xs text-white focus:outline-none"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="flex items-center gap-2 text-xs font-semibold text-slate-300">
+                <label className="flex items-center gap-2 text-xs font-bold text-[#A7B0BC]">
                   <input
                     type="checkbox"
                     checked={requiresApproval}
                     onChange={(e) => setRequiresApproval(e.target.checked)}
-                    className="rounded border-aec-border bg-aec-bg text-aec-burgundy"
+                    className="rounded border-[#1B2735] bg-[#05070A] text-[#2F80ED]"
                   />
                   <span>Requires Sign-off Approval Gate</span>
                 </label>
@@ -328,14 +327,14 @@ export const TaskManagementTable: React.FC = () => {
 
               {requiresApproval && (
                 <div>
-                  <label className="block text-xs font-semibold text-slate-300 mb-1">Approver Role</label>
+                  <label className="block text-xs font-bold text-[#A7B0BC] uppercase mb-1">Approver Role</label>
                   <select
                     value={approvalRole}
                     onChange={(e) => setApprovalRole(e.target.value as StakeholderRole)}
-                    className="w-full bg-aec-bg border border-aec-border rounded px-2.5 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-aec-rose"
+                    className="w-full bg-[#05070A] border border-[#1B2735] focus:border-[#2F80ED] rounded-xl px-2.5 py-2 text-xs text-white focus:outline-none"
                   >
                     {roleOptions.map((r) => (
-                      <option key={r} value={r}>
+                      <option key={r} value={r} className="bg-[#0A0F16]">
                         {formatRoleName(r)}
                       </option>
                     ))}
@@ -344,26 +343,26 @@ export const TaskManagementTable: React.FC = () => {
               )}
 
               <div>
-                <label className="block text-xs font-semibold text-slate-300 mb-1">Description</label>
+                <label className="block text-xs font-bold text-[#A7B0BC] uppercase mb-1">Description</label>
                 <textarea
                   rows={2}
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
-                  className="w-full bg-aec-bg border border-aec-border rounded px-3 py-1.5 text-xs text-slate-200 focus:outline-none focus:border-aec-rose"
+                  className="w-full bg-[#05070A] border border-[#1B2735] focus:border-[#2F80ED] rounded-xl px-3 py-2 text-xs text-white focus:outline-none"
                 />
               </div>
 
-              <div className="flex justify-end gap-2 pt-2 border-t border-aec-border">
+              <div className="flex justify-end gap-2 pt-2 border-t border-[#1B2735]">
                 <button
                   type="button"
                   onClick={() => setIsModalOpen(false)}
-                  className="px-3 py-1.5 bg-aec-bg hover:bg-slate-800 text-slate-300 rounded border border-aec-border text-xs"
+                  className="px-3.5 py-2 bg-[#05070A] hover:bg-[#0B1F3A] text-[#A7B0BC] rounded-xl border border-[#1B2735] text-xs font-bold"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-1.5 bg-aec-burgundy hover:bg-aec-rose text-slate-100 font-bold rounded border border-aec-rose/30 text-xs transition-colors"
+                  className="px-4 py-2 bg-[#1E5A91] hover:bg-[#2F80ED] text-white font-bold rounded-xl text-xs border border-[#2F80ED]/40 shadow-md"
                 >
                   Save Task
                 </button>

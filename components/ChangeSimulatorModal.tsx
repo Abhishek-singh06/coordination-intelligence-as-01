@@ -23,6 +23,7 @@ export const ChangeSimulatorModal: React.FC<ChangeSimulatorModalProps> = ({
   const [delayDays, setDelayDays] = useState(6);
   const [initiatorRole, setInitiatorRole] = useState<StakeholderRole>('CLIENT');
   const [reason, setReason] = useState('Mezzanine expansion requires duct rerouting.');
+  const [nlInput, setNlInput] = useState('');
 
   if (!isOpen) return null;
 
@@ -58,8 +59,6 @@ export const ChangeSimulatorModal: React.FC<ChangeSimulatorModalProps> = ({
     'FIRE_SAFETY_INSPECTOR',
   ];
 
-  const [nlInput, setNlInput] = useState('');
-
   const handleParseNL = () => {
     if (!nlInput.trim()) return;
     const lower = nlInput.toLowerCase();
@@ -93,8 +92,8 @@ export const ChangeSimulatorModal: React.FC<ChangeSimulatorModalProps> = ({
       <div className="bg-aec-card border border-aec-border rounded-2xl max-w-xl w-full p-6 shadow-2xl relative text-slate-100 max-h-[90vh] overflow-y-auto">
         <div className="flex items-center justify-between border-b border-aec-border pb-4 mb-4">
           <div className="flex items-center gap-2.5">
-            <div className="h-8 w-8 rounded-lg bg-aec-burgundy/40 border border-aec-rose/40 flex items-center justify-center text-slate-100">
-              <Zap className="h-4 w-4" />
+            <div className="h-8 w-8 rounded-lg bg-aec-surface border border-aec-blue/40 flex items-center justify-center text-slate-100">
+              <Zap className="h-4 w-4 text-aec-blue-light" />
             </div>
             <div>
               <h2 className="text-lg font-bold text-slate-100">Simulate Project Change</h2>
@@ -112,9 +111,9 @@ export const ChangeSimulatorModal: React.FC<ChangeSimulatorModalProps> = ({
         </div>
 
         {/* AI Prompt Input Bar */}
-        <div className="mb-5 bg-aec-bg/80 border border-aec-rose/30 p-3 rounded-xl">
+        <div className="mb-5 bg-aec-bg/80 border border-aec-blue/30 p-3 rounded-xl">
           <label className="text-[11px] font-bold text-slate-200 uppercase tracking-wider flex items-center gap-1.5 mb-1.5">
-            <Sparkles className="h-3.5 w-3.5 text-slate-100" />
+            <Sparkles className="h-3.5 w-3.5 text-aec-blue-light" />
             <span>AI Natural Language Change Intake</span>
           </label>
           <div className="flex gap-2">
@@ -123,12 +122,12 @@ export const ChangeSimulatorModal: React.FC<ChangeSimulatorModalProps> = ({
               value={nlInput}
               onChange={(e) => setNlInput(e.target.value)}
               placeholder="e.g. Move HVAC ductwork installation by 5 days due to site conflict"
-              className="flex-1 bg-aec-card border border-aec-border rounded-lg px-3 py-1.5 text-xs text-slate-100 focus:outline-none focus:border-rose-400"
+              className="flex-1 bg-aec-card border border-aec-border rounded-lg px-3 py-1.5 text-xs text-slate-100 focus:outline-none focus:border-aec-blue"
             />
             <button
               type="button"
               onClick={handleParseNL}
-              className="px-3 py-1.5 bg-aec-burgundy hover:bg-aec-rose text-slate-100 font-bold text-xs rounded-lg transition-colors border border-aec-rose/50 shrink-0"
+              className="px-3 py-1.5 bg-aec-blue hover:bg-aec-blue-light text-slate-100 font-bold text-xs rounded-lg transition-colors border border-aec-blue/50 shrink-0"
             >
               Parse Intent
             </button>
@@ -143,14 +142,14 @@ export const ChangeSimulatorModal: React.FC<ChangeSimulatorModalProps> = ({
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div
               onClick={handleApplyPreset1}
-              className="border border-aec-rose/40 bg-aec-burgundy/20 hover:bg-aec-burgundy/30 p-3 rounded-xl cursor-pointer transition-all flex flex-col justify-between group"
+              className="border border-aec-blue/40 bg-aec-surface hover:bg-aec-surface-hover p-3 rounded-xl cursor-pointer transition-all flex flex-col justify-between group"
             >
               <div>
                 <div className="flex items-center justify-between mb-1">
                   <span className="text-xs font-bold text-slate-100 group-hover:text-slate-200">
                     Preset 1 (Main Demo)
                   </span>
-                  <span className="bg-aec-darkRed/60 text-rose-300 border border-aec-darkRed font-mono text-[11px] px-2 py-0.5 rounded font-bold">
+                  <span className="bg-red-950/60 text-red-300 border border-red-800/60 font-mono text-[11px] px-2 py-0.5 rounded font-bold">
                     +6 Days
                   </span>
                 </div>
@@ -172,7 +171,7 @@ export const ChangeSimulatorModal: React.FC<ChangeSimulatorModalProps> = ({
                   <span className="text-xs font-bold text-slate-100 group-hover:text-slate-200">
                     Preset 2
                   </span>
-                  <span className="bg-rose-950/40 text-rose-200 border border-rose-800/40 font-mono text-[11px] px-2 py-0.5 rounded font-bold">
+                  <span className="bg-red-950/40 text-red-200 border border-red-800/40 font-mono text-[11px] px-2 py-0.5 rounded font-bold">
                     +3 Days
                   </span>
                 </div>
@@ -198,7 +197,7 @@ export const ChangeSimulatorModal: React.FC<ChangeSimulatorModalProps> = ({
               <select
                 value={targetTaskId}
                 onChange={(e) => setTargetTaskId(e.target.value)}
-                className="w-full bg-aec-bg border border-aec-border rounded-lg px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-aec-rose"
+                className="w-full bg-aec-bg border border-aec-border rounded-lg px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-aec-blue"
               >
                 {tasks.map((t) => (
                   <option key={t.id} value={t.id}>
@@ -216,7 +215,7 @@ export const ChangeSimulatorModal: React.FC<ChangeSimulatorModalProps> = ({
                 max="60"
                 value={delayDays}
                 onChange={(e) => setDelayDays(parseInt(e.target.value) || 0)}
-                className="w-full bg-aec-bg border border-aec-border rounded-lg px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-aec-rose"
+                className="w-full bg-aec-bg border border-aec-border rounded-lg px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-aec-blue"
               />
             </div>
           </div>
@@ -227,7 +226,7 @@ export const ChangeSimulatorModal: React.FC<ChangeSimulatorModalProps> = ({
               <select
                 value={initiatorRole}
                 onChange={(e) => setInitiatorRole(e.target.value as StakeholderRole)}
-                className="w-full bg-aec-bg border border-aec-border rounded-lg px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-aec-rose"
+                className="w-full bg-aec-bg border border-aec-border rounded-lg px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-aec-blue"
               >
                 {rolesList.map((r) => (
                   <option key={r} value={r}>
@@ -244,7 +243,7 @@ export const ChangeSimulatorModal: React.FC<ChangeSimulatorModalProps> = ({
                 value={reason}
                 onChange={(e) => setReason(e.target.value)}
                 placeholder="e.g. Mezzanine relocation..."
-                className="w-full bg-aec-bg border border-aec-border rounded-lg px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-aec-rose"
+                className="w-full bg-aec-bg border border-aec-border rounded-lg px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-aec-blue"
               />
             </div>
           </div>
@@ -260,7 +259,7 @@ export const ChangeSimulatorModal: React.FC<ChangeSimulatorModalProps> = ({
 
             <button
               type="submit"
-              className="flex items-center gap-2 px-5 py-2 bg-aec-burgundy hover:bg-aec-rose text-slate-100 text-xs font-bold rounded-lg border border-aec-rose/30 shadow-md transition-colors"
+              className="flex items-center gap-2 px-5 py-2 bg-aec-blue hover:bg-aec-blue-light text-slate-100 text-xs font-bold rounded-lg border border-aec-blue/30 shadow-md transition-colors"
             >
               <Play className="h-3.5 w-3.5 fill-current" />
               <span>Analyze Blast Radius & Propagate</span>

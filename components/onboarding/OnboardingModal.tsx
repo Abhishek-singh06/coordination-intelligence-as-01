@@ -225,15 +225,15 @@ export const OnboardingModal: React.FC = () => {
         {/* Progress Bar */}
         <div className="flex items-center justify-between mb-6 pb-4 border-b border-aec-border">
           <div className="flex items-center gap-2.5">
-            <div className="h-9 w-9 rounded-xl bg-aec-burgundy/40 border border-aec-rose/40 flex items-center justify-center text-slate-100 font-bold">
-              <Activity className="h-5 w-5" />
+            <div className="h-9 w-9 rounded-xl bg-aec-surface border border-aec-blue/40 flex items-center justify-center text-slate-100 font-bold">
+              <Activity className="h-5 w-5 text-aec-blue-light" />
             </div>
             <div>
               <h2 className="text-base font-bold text-slate-100">Coordination Intelligence</h2>
               <p className="text-xs text-aec-muted">Workspace Onboarding Wizard</p>
             </div>
           </div>
-          <span className="text-xs font-mono font-bold text-slate-100 bg-aec-burgundy/30 px-3 py-1 rounded-full border border-aec-rose/30">
+          <span className="text-xs font-mono font-bold text-slate-100 bg-aec-surface px-3 py-1 rounded-full border border-aec-blue/30">
             Step {step} of 6
           </span>
         </div>
@@ -241,8 +241,8 @@ export const OnboardingModal: React.FC = () => {
         {/* STEP 1 — WELCOME */}
         {step === 1 && (
           <div className="space-y-6 text-center py-4">
-            <div className="h-16 w-16 bg-aec-burgundy/30 border border-aec-rose/40 rounded-2xl flex items-center justify-center mx-auto text-slate-100 shadow-inner">
-              <Activity className="h-8 w-8" />
+            <div className="h-16 w-16 bg-aec-surface border border-aec-blue/40 rounded-2xl flex items-center justify-center mx-auto text-slate-100 shadow-inner">
+              <Activity className="h-8 w-8 text-aec-blue-light" />
             </div>
 
             <div>
@@ -257,7 +257,7 @@ export const OnboardingModal: React.FC = () => {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-4">
               <button
                 onClick={() => setStep(2)}
-                className="w-full sm:w-auto px-6 py-3 bg-aec-burgundy hover:bg-aec-rose text-slate-100 text-xs font-bold rounded-xl shadow-lg border border-aec-rose/40 transition-all flex items-center justify-center gap-2 focus:outline-none"
+                className="w-full sm:w-auto px-6 py-3 bg-aec-blue hover:bg-aec-blue-light text-slate-100 text-xs font-bold rounded-xl shadow-lg border border-aec-blue/40 transition-all flex items-center justify-center gap-2 focus:outline-none"
               >
                 <span>Get Started</span>
                 <ArrowRight className="h-4 w-4" />
@@ -282,7 +282,7 @@ export const OnboardingModal: React.FC = () => {
             </div>
 
             {profileError && (
-              <div className="p-3 rounded-lg bg-aec-darkRed/40 border border-aec-darkRed text-rose-300 text-xs font-medium">
+              <div className="p-3 rounded-lg bg-red-950/40 border border-red-800/40 text-red-300 text-xs font-medium">
                 {profileError}
               </div>
             )}
@@ -298,7 +298,7 @@ export const OnboardingModal: React.FC = () => {
                     value={userName}
                     onChange={(e) => setUserName(e.target.value)}
                     placeholder="e.g. Marcus Vance"
-                    className="w-full bg-aec-bg border border-aec-border rounded-lg pl-9 pr-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-aec-rose"
+                    className="w-full bg-aec-bg border border-aec-border rounded-lg pl-9 pr-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-aec-blue"
                   />
                 </div>
               </div>
@@ -313,7 +313,7 @@ export const OnboardingModal: React.FC = () => {
                     value={userOrg}
                     onChange={(e) => setUserOrg(e.target.value)}
                     placeholder="e.g. Studio Forma"
-                    className="w-full bg-aec-bg border border-aec-border rounded-lg pl-9 pr-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-aec-rose"
+                    className="w-full bg-aec-bg border border-aec-border rounded-lg pl-9 pr-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-aec-blue"
                   />
                 </div>
               </div>
@@ -325,7 +325,7 @@ export const OnboardingModal: React.FC = () => {
                 <select
                   value={userRole}
                   onChange={(e) => setUserRole(e.target.value as StakeholderRole)}
-                  className="w-full bg-aec-bg border border-aec-border rounded-lg px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-aec-rose"
+                  className="w-full bg-aec-bg border border-aec-border rounded-lg px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-aec-blue"
                 >
                   {roleOptions.map((r) => (
                     <option key={r} value={r}>
@@ -343,7 +343,7 @@ export const OnboardingModal: React.FC = () => {
                   value={userEmail}
                   onChange={(e) => setUserEmail(e.target.value)}
                   placeholder="e.g. marcus@forma.com"
-                  className="w-full bg-aec-bg border border-aec-border rounded-lg px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-aec-rose"
+                  className="w-full bg-aec-bg border border-aec-border rounded-lg px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-aec-blue"
                 />
               </div>
             </div>
@@ -359,7 +359,7 @@ export const OnboardingModal: React.FC = () => {
 
               <button
                 type="submit"
-                className="px-6 py-2 bg-aec-burgundy hover:bg-aec-rose text-slate-100 text-xs font-bold rounded-lg border border-aec-rose/30 transition-colors"
+                className="px-6 py-2 bg-aec-blue hover:bg-aec-blue-light text-slate-100 text-xs font-bold rounded-lg border border-aec-blue/30 transition-colors"
               >
                 Continue
               </button>
@@ -376,7 +376,7 @@ export const OnboardingModal: React.FC = () => {
             </div>
 
             {projError && (
-              <div className="p-3 rounded-lg bg-aec-darkRed/40 border border-aec-darkRed text-rose-300 text-xs font-medium">
+              <div className="p-3 rounded-lg bg-red-950/40 border border-red-800/40 text-red-300 text-xs font-medium">
                 {projError}
               </div>
             )}
@@ -384,10 +384,10 @@ export const OnboardingModal: React.FC = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div
                 onClick={() => handleNextProject('demo')}
-                className="border border-aec-rose/40 bg-aec-burgundy/20 hover:bg-aec-burgundy/30 p-4 rounded-xl cursor-pointer transition-all flex flex-col justify-between"
+                className="border border-aec-blue/40 bg-aec-surface hover:bg-aec-surface-hover p-4 rounded-xl cursor-pointer transition-all flex flex-col justify-between"
               >
                 <div>
-                  <span className="text-[10px] font-bold text-slate-100 uppercase tracking-wider bg-aec-burgundy/40 px-2 py-0.5 rounded border border-aec-rose/30">
+                  <span className="text-[10px] font-bold text-slate-100 uppercase tracking-wider bg-aec-surface px-2 py-0.5 rounded border border-aec-blue/30">
                     Recommended Hackathon Demo
                   </span>
                   <h4 className="text-sm font-bold text-slate-100 mt-2 mb-1">

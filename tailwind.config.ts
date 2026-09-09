@@ -11,15 +11,27 @@ const config: Config = {
     extend: {
       colors: {
         aec: {
-          bg: "#111506",        // Deep Dark Green (Main background)
-          card: "#323522",      // Dark Olive (Panels, Cards, Surfaces)
-          border: "#81815D",    // Muted Olive / Khaki (Borders & Subtle UI)
-          darkRed: "#340A0E",   // Primary Dark Red (Critical/High-impact)
-          burgundy: "#570F1D",  // Secondary Burgundy (Primary buttons/Active)
-          rose: "#6F2B34",      // Accent Rose (Hover & Highlights)
-          muted: "#81815D",     // Muted Text & Diagrams
-          textLight: "#F8FAFC", // Off-white for high contrast readability
-          textMuted: "#94A3B8", // Subtle text readability
+          bg: "#05070A",           // Primary Background (Deep Black-Blue)
+          surface: "#0A0F16",      // Secondary Background (Card Surfaces)
+          card: "#0A0F16",         // Card Surfaces
+          darkBlue: "#0B1F3A",     // Dark Blue
+          primaryBlue: "#123B66",  // Primary Blue
+          accentBlue: "#1E5A91",   // Accent Blue
+          brightBlue: "#2F80ED",   // Bright Blue (Interactive & Buttons)
+          border: "#1B2735",       // Border Color
+          textMain: "#FFFFFF",     // White Text
+          textOff: "#F5F7FA",      // Off-white Text
+          textSecondary: "#A7B0BC",// Secondary Text
+          textMuted: "#6F7B88",    // Muted Text
+          critical: "#E53E3E",     // Restrained Critical Red
+          success: "#10B981",      // Restrained Success Green
+          
+          // Legacy mappings mapped to new dark blue/black/white palette
+          darkRed: "#1B2735",
+          burgundy: "#1E5A91",
+          rose: "#2F80ED",
+          muted: "#6F7B88",
+          textLight: "#FFFFFF",
         },
       },
       fontFamily: {
@@ -27,8 +39,9 @@ const config: Config = {
         sans: ['system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Open Sans', 'Helvetica Neue', 'sans-serif'],
       },
       boxShadow: {
-        'aec-glow': '0 0 15px rgba(111, 43, 52, 0.3)',
-        'aec-critical': '0 0 15px rgba(52, 10, 14, 0.6)',
+        'aec-glow': '0 0 20px rgba(47, 128, 237, 0.25)',
+        'aec-blue': '0 0 15px rgba(30, 90, 145, 0.4)',
+        'aec-critical': '0 0 15px rgba(229, 62, 62, 0.5)',
       },
       animation: {
         'pulse-subtle': 'pulse 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',

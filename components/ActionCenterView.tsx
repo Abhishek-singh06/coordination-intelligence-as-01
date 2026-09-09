@@ -36,7 +36,7 @@ export const ActionCenterView: React.FC = () => {
           <select
             value={filterStatus}
             onChange={(e) => setFilterStatus(e.target.value)}
-            className="bg-aec-bg border border-aec-border rounded-lg px-2.5 py-1 text-xs text-slate-200 focus:outline-none focus:border-aec-rose"
+            className="bg-aec-bg border border-aec-border rounded-lg px-2.5 py-1 text-xs text-slate-200 focus:outline-none focus:border-aec-blue"
           >
             <option value="ALL">All Actions ({generalActions.length})</option>
             <option value="PENDING">Pending ({generalActions.filter((a) => a.status === 'PENDING').length})</option>
@@ -57,7 +57,7 @@ export const ActionCenterView: React.FC = () => {
               className={`p-4 rounded-xl border transition-all ${
                 act.status === 'RESOLVED'
                   ? 'bg-aec-bg/50 border-aec-border opacity-75'
-                  : 'bg-aec-burgundy/20 border-aec-rose/40 shadow-sm'
+                  : 'bg-aec-surface border-aec-blue/40 shadow-sm'
               }`}
             >
               <div className="flex items-start justify-between gap-3 mb-1.5">
@@ -75,7 +75,7 @@ export const ActionCenterView: React.FC = () => {
                 ) : (
                   <button
                     onClick={() => resolveAction(act.id)}
-                    className="px-3 py-1.5 bg-aec-burgundy hover:bg-aec-rose text-slate-100 text-xs font-semibold rounded border border-aec-rose/30 transition-colors"
+                    className="px-3 py-1.5 bg-aec-blue hover:bg-aec-blue-light text-slate-100 text-xs font-semibold rounded border border-aec-blue/30 transition-colors"
                   >
                     Mark Done & Resolve
                   </button>

@@ -13,18 +13,18 @@ import { ProjectMemoryAudit } from '@/components/ProjectMemoryAudit';
 import { ChangeSimulatorModal } from '@/components/ChangeSimulatorModal';
 import { TaskDetailModal } from '@/components/TaskDetailModal';
 import { OnboardingModal } from '@/components/onboarding/OnboardingModal';
-import { TaskManagementTable } from '@/components/TaskManagementTable';
 import { ChangeManagementPanel } from '@/components/ChangeManagementPanel';
-import { ApprovalCenterView } from '@/components/ApprovalCenterView';
-import { ActionCenterView } from '@/components/ActionCenterView';
-import { TimelineView } from '@/components/TimelineView';
+import { ProjectView } from '@/components/ProjectView';
 import { SettingsView } from '@/components/SettingsView';
 import { GlobalSearchModal } from '@/components/GlobalSearchModal';
 import { NewProjectModal } from '@/components/NewProjectModal';
-import { ArrowLeft, ExternalLink, ShieldCheck } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
+
+import { useRouter } from 'next/navigation';
 
 export default function CommandCenterPage() {
-  const { activeTab, onboardingCompleted } = useStore();
+  const router = useRouter();
+  const { activeTab, onboardingCompleted, isAuthenticated } = useStore();
   const [mounted, setMounted] = useState(false);
 
   const [isSimulatorOpen, setIsSimulatorOpen] = useState(false);
@@ -34,6 +34,20 @@ export default function CommandCenterPage() {
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  useEffect(() => {
+    if (mounted && !isAuthenticated) {
+      router.push('/login');
+    }
+  }, [mounted, isAuthenticated, router]);
+
+  if (!mounted || !isAuthenticated) {
+    return (
+      <div className="min-h-screen bg-aec-bg flex items-center justify-center text-slate-400 text-xs">
+        <span>Authenticating workspace...</span>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-aec-bg flex flex-col font-sans text-slate-100 bg-grid-technical">
@@ -88,50 +102,24 @@ export default function CommandCenterPage() {
           </div>
         )}
 
-        {/* Tab 2: Task Activity Register */}
-        {activeTab === 'tasks' && (
-          <div className="animate-in fade-in duration-200">
-            <TaskManagementTable />
-          </div>
-        )}
-
-        {/* Tab 3: Change Orders & Variance Register */}
+        {/* Tab 2: Change Management Register & Simulator */}
         {activeTab === 'changes' && (
           <div className="animate-in fade-in duration-200">
             <ChangeManagementPanel />
           </div>
         )}
 
-        {/* Tab 4: Approvals & Actions */}
-        {activeTab === 'approvals' && (
-          <div className="space-y-6 animate-in fade-in duration-200">
-            <ApprovalCenterView />
-            <ActionCenterView />
-          </div>
-        )}
+        {/* Tab 3: Consolidated Project View (Tasks, Dependencies, Stakeholders, Approvals) */}
+        {activeTab === 'project' && <ProjectView />}
 
-        {/* Tab 5: Critical Path Schedule Timeline */}
-        {activeTab === 'timeline' && (
-          <div className="animate-in fade-in duration-200">
-            <TimelineView />
-          </div>
-        )}
-
-        {/* Tab 6: Stakeholders Communication Radius */}
-        {activeTab === 'stakeholders' && (
-          <div className="animate-in fade-in duration-200">
-            <StakeholderPanel />
-          </div>
-        )}
-
-        {/* Tab 7: Project Memory & Audit Trail */}
-        {activeTab === 'audit' && (
+        {/* Tab 4: Project Memory & Audit Trail */}
+        {activeTab === 'memory' && (
           <div className="animate-in fade-in duration-200">
             <ProjectMemoryAudit />
           </div>
         )}
 
-        {/* Tab 8: Settings */}
+        {/* Tab 5: Settings */}
         {activeTab === 'settings' && (
           <div className="animate-in fade-in duration-200">
             <SettingsView />

@@ -36,7 +36,7 @@ export const TimelineView: React.FC = () => {
             <div
               key={task.id}
               onClick={() => setSelectedTaskId(task.id)}
-              className="bg-aec-bg/60 border border-aec-border p-3 rounded-xl hover:border-aec-rose/40 cursor-pointer transition-all space-y-2"
+              className="bg-aec-bg/60 border border-aec-border p-3 rounded-xl hover:border-aec-blue/40 cursor-pointer transition-all space-y-2"
             >
               <div className="flex items-center justify-between gap-3 text-xs">
                 <div className="flex items-center gap-2">
@@ -49,7 +49,7 @@ export const TimelineView: React.FC = () => {
 
                 <div className="flex items-center gap-2">
                   {isCritical && (
-                    <span className="text-[10px] font-bold uppercase tracking-wider bg-aec-darkRed/60 text-rose-300 px-2 py-0.5 rounded border border-aec-darkRed">
+                    <span className="text-[10px] font-bold uppercase tracking-wider bg-red-950/60 text-red-300 px-2 py-0.5 rounded border border-red-800/60">
                       Critical Path
                     </span>
                   )}
@@ -68,11 +68,11 @@ export const TimelineView: React.FC = () => {
                 <div
                   className={`h-full rounded-full transition-all duration-500 ${
                     isBlocked
-                      ? 'bg-aec-darkRed animate-pulse'
+                      ? 'bg-red-700 animate-pulse'
                       : task.status === 'COMPLETED'
                       ? 'bg-emerald-600'
                       : task.status === 'IN_PROGRESS'
-                      ? 'bg-aec-burgundy'
+                      ? 'bg-aec-blue'
                       : 'bg-aec-muted/40'
                   }`}
                   style={{ width: `${Math.min(100, Math.max(15, (task.plannedDays / 15) * 100))}%` }}

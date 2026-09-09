@@ -27,15 +27,15 @@ import { computeBlastRadius, validateAcyclicGraph } from './graphEngine';
 
 export type AppTab =
   | 'dashboard'
-  | 'tasks'
   | 'changes'
-  | 'approvals'
-  | 'timeline'
-  | 'stakeholders'
-  | 'audit'
+  | 'project'
+  | 'memory'
   | 'settings';
 
+export type ProjectSubTab = 'tasks' | 'dependencies' | 'stakeholders' | 'approvals';
+
 interface AppState {
+  isAuthenticated: boolean;
   onboardingCompleted: boolean;
   currentUser: UserProfile | null;
   projects: Project[];
@@ -56,6 +56,7 @@ interface AppState {
   selectedTaskId: string | null;
   selectedChangeId: string | null;
   activeTab: AppTab;
+  projectSubTab: ProjectSubTab;
   theme: 'dark' | 'light';
 
   // Getters for current active project
@@ -85,8 +86,13 @@ interface AppState {
     dependencies: Omit<DependencyEdge, 'id'>[]
   ) => string;
 
+  // Auth Actions
+  login: (email: string, password: string) => Promise<{ success: boolean; error?: string }>;
+  logout: () => void;
+
   setCurrentUserRole: (role: StakeholderRole) => void;
   setActiveTab: (tab: AppTab) => void;
+  setProjectSubTab: (subTab: ProjectSubTab) => void;
   setTheme: (theme: 'dark' | 'light') => void;
 
   setSelectedTaskId: (taskId: string | null) => void;
@@ -169,6 +175,7 @@ const DEFAULT_AUDIT_MAP = {
 export const useStore = create<AppState>()(
   persist(
     (set, get) => ({
+      isAuthenticated: true,
       onboardingCompleted: false,
       currentUser: {
         id: 'usr-1',
@@ -202,6 +209,7 @@ export const useStore = create<AppState>()(
       selectedTaskId: null,
       selectedChangeId: null,
       activeTab: 'dashboard',
+      projectSubTab: 'tasks',
       theme: 'dark',
 
       // Getters
@@ -329,11 +337,59 @@ export const useStore = create<AppState>()(
         return pid;
       },
 
+      login: async (email, password) => {
+        await new Promise((res) => setTimeout(res, 600));
+
+        const trimmedEmail = email.trim().toLowerCase();
+        if (!trimmedEmail || !trimmedEmail.includes('@')) {
+          return { success: false, error: 'Please enter a valid email address.' };
+        }
+        if (!password || password.length < 3) {
+          return { success: false, error: 'Password must be at least 3 characters long.' };
+        }
+
+        const currentStakeholders = get().getCurrentStakeholders();
+        const matchedStakeholder = currentStakeholders.find(
+          (s) => s.email.toLowerCase() === trimmedEmail
+        );
+
+        const userProfile: UserProfile = matchedStakeholder
+          ? {
+              id: matchedStakeholder.id,
+              name: matchedStakeholder.name,
+              organization: matchedStakeholder.organization,
+              role: matchedStakeholder.role,
+              email: matchedStakeholder.email,
+            }
+          : {
+              id: `usr-1`,
+              name: 'Elena Rostova',
+              organization: 'Prime PMO',
+              role: 'PROJECT_MANAGER',
+              email: trimmedEmail,
+            };
+
+        set({
+          isAuthenticated: true,
+          currentUser: userProfile,
+        });
+
+        return { success: true };
+      },
+
+      logout: () => {
+        set({
+          isAuthenticated: false,
+          currentUser: null,
+        });
+      },
+
       setCurrentUserRole: (role) => {
         set((state) => (state.currentUser ? { currentUser: { ...state.currentUser, role } } : {}));
       },
 
       setActiveTab: (tab) => set({ activeTab: tab }),
+      setProjectSubTab: (subTab) => set({ projectSubTab: subTab }),
       setTheme: (theme) => set({ theme }),
 
       setSelectedTaskId: (taskId) => set({ selectedTaskId: taskId }),
@@ -887,8 +943,18 @@ export const useStore = create<AppState>()(
     }),
     {
       name: 'aec-coordination-store-v2',
-      storage: createJSONStorage(() => localStorage),
+      storage: createJSONStorage(() => {
+        if (typeof window !== 'undefined') {
+          return localStorage;
+        }
+        return {
+          getItem: () => null,
+          setItem: () => {},
+          removeItem: () => {},
+        };
+      }),
       partialize: (state) => ({
+        isAuthenticated: state.isAuthenticated,
         onboardingCompleted: state.onboardingCompleted,
         currentUser: state.currentUser,
         projects: state.projects,

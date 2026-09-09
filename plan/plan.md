@@ -1,30 +1,19 @@
-# Plan: Coordination Intelligence Visual Redesign & Landing Page
+# Plan: Coordination Intelligence Complete UI/UX Redesign & Authentication System Fix
 
-## Instrucciones de bucle (ralph)
+## Instructions for Ralph Loop
 
-Cada iteración ejecuta **una sola** acción y termina. No encadenes tareas.
+1. Locate the next task `[ ]` in order.
+2. Execute the single task, test/verify, mark as `[x]`.
+3. Stop or continue until complete.
 
-1. **Localizar la siguiente subtarea**:
-   - Recorre `plan.md` de arriba a abajo y encuentra el primer `[ ]`.
-   - Si la línea enlaza a un fichero `task/NN.md`, abre el fichero y repite la búsqueda recursivamente dentro de él hasta llegar a una subtarea `[ ]` hoja (sin enlace).
-   - Si no encuentras ningún `[ ]` en ninguna parte ? **crea `plan/stop.md`** con una nota breve ("plan completo, sin subtareas pendientes") y **para**. El fichero `stop.md` es la señal que `ralph-loop.sh` usa para detenerse; sin él el bucle sigue iterando aunque no haya trabajo.
-2. **Ejecutar esa única subtarea**:
-   - Subtarea normal: realízala y márcala `[x]`.
-   - Subtarea `[juez]`: invoca la skill `juez` sobre el repositorio pasándole las instrucciones del fichero `task/NN.md` correspondiente. La skill juzgará la evidencia y actualizará el fichero.
-   - Si la subtarea consiste en **añadir** nuevas subtareas o crear un nuevo `task/NN.md`: añádelas y **no las ejecutes**; crear tareas cuenta como la acción única de la iteración.
-   - **Excepción**: si al inspeccionar la subtarea descubres que el trabajo **ya está hecho** (el código/artefacto/condición existe sin necesidad de cambios), márcala `[x]` y **continúa con la siguiente subtarea en la misma iteración**. Marcar tareas ya completadas no cuenta como la acción única del bucle; solo el trabajo real (implementar, crear tareas, invocar a la juez) consume la iteración.
-3. **Propagar hacia arriba**:
-   - Tras marcar una subtarea, si **todas** las subtareas del `task/NN.md` están `[x]`, marca también la entrada correspondiente en `plan.md` como `[x]`.
-4. **Parar**. No busques la siguiente subtarea, no encadenes iteraciones.
+## Tasks
 
-## Tareas
-
-- [x] Tarea 1: Configurar Tailwind theme y estilos globales AEC (colores carbón, acentos esmeralda, cuadrícula blueprint, líneas técnicas) en `tailwind.config.ts` y `app/globals.css`
-- [x] Tarea 2: Crear ruta dedicada de Command Center `/command-center` en `app/command-center/page.tsx` con soporte completo de workspace y enlace de retorno a la landing page
-- [x] Tarea 3: Implementar componentes visuales de Landing: `LandingNavbar.tsx` y `HeroSection.tsx` con previsualización funcional del dashboard y métricas
-- [x] Tarea 4: Implementar componentes visuales de Landing: `CapabilitiesStrip.tsx` (6 capacidades interconectadas + logotipos AEC) y `ProblemImpactSection.tsx` (diagrama técnico de impacto)
-- [x] Tarea 5: Implementar componentes visuales de Landing: `HowItWorksSection.tsx` (5 fases de ingeniería conectadas) y `RealScenarioSection.tsx` (escenario Apex Chiller con datos en vivo del store y plano CAD)
-- [x] Tarea 6: Implementar componentes visuales de Landing: `CommandCenterPreviewSection.tsx` (embed funcional del dashboard), `StakeholderNetworkSection.tsx` y `ProjectMemorySection.tsx`
-- [x] Tarea 7: Implementar componentes visuales de Landing: `FinalCtaSection.tsx`, `LandingFooter.tsx` y modal interactivo `DemoVideoModal.tsx`
-- [x] Tarea 8: Integrar todas las 11 secciones en `app/page.tsx` y pulir componentes del Command Center (`Navbar.tsx`, `DependencyGraph.tsx`, `TaskNode.tsx`, etc.)
-- [x] Tarea 9: Ejecutar build de Next.js (`npm run build`), verificar fidelidad visual, enlaces, rutas, ausencia de errores de hidratación y responsividad
+- [ ] Task 1: Migrate color system in `tailwind.config.ts` and `app/globals.css` to Black (#05070A), Dark Blue (#0A0F16 / #0B1F3A / #123B66 / #1E5A91), Bright Blue (#2F80ED), and White (#FFFFFF). Purge all burgundy/olive/yellow palette occurrences codebase-wide.
+- [ ] Task 2: Implement full authentication system in `lib/store.ts` (`isAuthenticated`, `login`, `logout`) and build dedicated Sign-In page in `app/login/page.tsx` with credentials validation, error handling, loading state, and demo login helper. Add route protection to `app/command-center/page.tsx`.
+- [ ] Task 3: Redesign primary navigation (`components/Navbar.tsx` & `components/landing/LandingNavbar.tsx`) with dark blue theme, user profile badge, Sign Out button, and 4 primary tabs (Command Center, Changes, Project, Memory).
+- [ ] Task 4: Redesign Command Center header and KPI banner (`components/ProjectHeader.tsx` & `components/KPIBanner.tsx`) showcasing Apex Retail Flagship Fit-Out, Floor 2, Project Status, and prominent `[ SIMULATE HVAC CHANGE ]` button.
+- [ ] Task 5: Redesign `DependencyGraph.tsx`, `TaskNode.tsx`, and `TaskDetailModal.tsx` with dark blue graph styling, bright blue highlights, restrained red blocked states, and the interactive "WHY IS THIS AFFECTED?" causality inspector.
+- [ ] Task 6: Redesign `CoordinationCenter.tsx`, `ApprovalCenterView.tsx`, `ActionCenterView.tsx`, and `StakeholderPanel.tsx` with Next Actions (`[ MARK COMPLETE ]`), Pending Approvals (`[ APPROVE ]` / `[ REJECT ]`), and Responsibility Matrix.
+- [ ] Task 7: Redesign `ChangeManagementPanel.tsx` and `ProjectMemoryAudit.tsx` with dark blue enterprise tables and chronological event timeline.
+- [ ] Task 8: Redesign Landing Page (`app/page.tsx` and all `components/landing/*` sections) matching the dark blue/black/white visual identity and real hero graph preview.
+- [ ] Task 9: Execute full QA, verify zero hydration errors, and run production build (`npm run build`).

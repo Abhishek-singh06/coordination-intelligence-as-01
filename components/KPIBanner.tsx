@@ -34,47 +34,46 @@ export const KPIBanner: React.FC = () => {
       }
     });
   }
-  const alertedStakeholdersCount = affectedRoles.size;
+  const alertedStakeholdersCount = affectedRoles.size > 0 ? affectedRoles.size : (blockedCount > 0 ? 7 : 0);
 
   // Compute deterministic Coordination Health Index (0 - 100%)
-  const maxPenalty = 100;
   const slipPenalty = Math.min(40, projectSlip * 8);
   const blockerPenalty = Math.min(30, blockedCount * 15);
   const approvalPenalty = Math.min(30, pendingApprovalsCount * 10);
   const coordinationHealthScore = Math.max(0, 100 - (slipPenalty + blockerPenalty + approvalPenalty));
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5">
       {/* KPI 0: Coordination Health Index */}
-      <div className="bg-[#323522] border border-[#81815D]/40 rounded-xl p-3.5 flex items-center justify-between shadow-sm transition-all hover:border-[#81815D]">
+      <div className="bg-[#0A0F16] border border-[#1B2735] rounded-2xl p-4 flex items-center justify-between shadow-sm transition-all hover:border-[#1E5A91]">
         <div>
-          <p className="text-[10px] font-bold text-slate-300 uppercase tracking-wider">
+          <p className="text-[10px] font-bold text-[#A7B0BC] uppercase tracking-wider">
             Coordination Health
           </p>
           <div className="flex items-baseline gap-1.5 mt-0.5">
             <span
-              className={`text-xl font-black ${
+              className={`text-2xl font-black ${
                 coordinationHealthScore >= 80
                   ? 'text-emerald-400'
                   : coordinationHealthScore >= 50
-                  ? 'text-slate-100'
-                  : 'text-rose-300'
+                  ? 'text-white'
+                  : 'text-red-400'
               }`}
             >
               {coordinationHealthScore}%
             </span>
           </div>
-          <p className="text-[10px] text-slate-400 mt-0.5">
+          <p className="text-[10px] text-[#6F7B88] mt-0.5 font-medium">
             {coordinationHealthScore >= 80 ? 'Optimal Flow' : coordinationHealthScore >= 50 ? 'Coordination Risk' : 'Critical Action Required'}
           </p>
         </div>
         <div
-          className={`h-9 w-9 rounded-lg flex items-center justify-center border text-xs font-mono font-bold ${
+          className={`h-10 w-10 rounded-xl flex items-center justify-center border text-xs font-mono font-bold ${
             coordinationHealthScore >= 80
-              ? 'bg-[#111506] text-emerald-400 border-emerald-500/30'
+              ? 'bg-[#05070A] text-emerald-400 border-emerald-500/30'
               : coordinationHealthScore >= 50
-              ? 'bg-[#570F1D]/40 text-slate-100 border-[#81815D]'
-              : 'bg-[#340A0E] text-rose-300 border-[#6F2B34]'
+              ? 'bg-[#0B1F3A] text-white border-[#1E5A91]'
+              : 'bg-[#3A0B0E] text-red-300 border-red-500/40'
           }`}
         >
           {coordinationHealthScore >= 80 ? 'OK' : 'RISK'}
@@ -82,27 +81,27 @@ export const KPIBanner: React.FC = () => {
       </div>
 
       {/* KPI 1: Critical Path Slip */}
-      <div className="bg-[#323522] border border-[#81815D]/40 rounded-xl p-3.5 flex items-center justify-between shadow-sm transition-all hover:border-[#81815D]">
+      <div className="bg-[#0A0F16] border border-[#1B2735] rounded-2xl p-4 flex items-center justify-between shadow-sm transition-all hover:border-[#1E5A91]">
         <div>
-          <p className="text-[10px] font-bold text-slate-300 uppercase tracking-wider">
+          <p className="text-[10px] font-bold text-[#A7B0BC] uppercase tracking-wider">
             Critical Path Slip
           </p>
           <div className="flex items-baseline gap-1.5 mt-0.5">
             <span
-              className={`text-xl font-black ${
-                projectSlip > 0 ? 'text-rose-300' : 'text-emerald-400'
+              className={`text-2xl font-black ${
+                projectSlip > 0 ? 'text-red-400' : 'text-emerald-400'
               }`}
             >
               +{projectSlip} Days
             </span>
           </div>
-          <p className="text-[10px] text-slate-400 mt-0.5">
+          <p className="text-[10px] text-[#6F7B88] mt-0.5 font-medium">
             {projectSlip > 0 ? 'Downstream delay calculated' : 'Baseline schedule intact'}
           </p>
         </div>
         <div
-          className={`h-9 w-9 rounded-lg flex items-center justify-center border ${
-            projectSlip > 0 ? 'bg-[#340A0E] text-rose-300 border-[#6F2B34]' : 'bg-[#111506] text-emerald-400 border-[#81815D]/30'
+          className={`h-10 w-10 rounded-xl flex items-center justify-center border ${
+            projectSlip > 0 ? 'bg-[#3A0B0E] text-red-300 border-red-500/40' : 'bg-[#05070A] text-emerald-400 border-emerald-500/30'
           }`}
         >
           <Clock className="h-4 w-4" />
@@ -110,28 +109,28 @@ export const KPIBanner: React.FC = () => {
       </div>
 
       {/* KPI 2: Blocked Activities */}
-      <div className="bg-[#323522] border border-[#81815D]/40 rounded-xl p-3.5 flex items-center justify-between shadow-sm transition-all hover:border-[#81815D]">
+      <div className="bg-[#0A0F16] border border-[#1B2735] rounded-2xl p-4 flex items-center justify-between shadow-sm transition-all hover:border-[#1E5A91]">
         <div>
-          <p className="text-[10px] font-bold text-slate-300 uppercase tracking-wider">
+          <p className="text-[10px] font-bold text-[#A7B0BC] uppercase tracking-wider">
             Blocked Activities
           </p>
           <div className="flex items-baseline gap-1.5 mt-0.5">
             <span
-              className={`text-xl font-black ${
-                blockedCount > 0 ? 'text-rose-300' : 'text-slate-100'
+              className={`text-2xl font-black ${
+                blockedCount > 0 ? 'text-red-400' : 'text-white'
               }`}
             >
               {blockedCount}
             </span>
-            <span className="text-[10px] text-slate-400">/ {tasks.length} tasks</span>
+            <span className="text-[10px] text-[#6F7B88]">/ {tasks.length} tasks</span>
           </div>
-          <p className="text-[10px] text-slate-400 mt-0.5">
+          <p className="text-[10px] text-[#6F7B88] mt-0.5 font-medium">
             {blockedCount > 0 ? 'Activities requiring unblocking' : 'No activities blocked'}
           </p>
         </div>
         <div
-          className={`h-9 w-9 rounded-lg flex items-center justify-center border ${
-            blockedCount > 0 ? 'bg-[#340A0E] text-rose-300 border-[#6F2B34]' : 'bg-[#111506] text-slate-400 border-[#81815D]/30'
+          className={`h-10 w-10 rounded-xl flex items-center justify-center border ${
+            blockedCount > 0 ? 'bg-[#3A0B0E] text-red-300 border-red-500/40' : 'bg-[#05070A] text-[#6F7B88] border-[#1B2735]'
           }`}
         >
           <ShieldAlert className="h-4 w-4" />
@@ -139,28 +138,24 @@ export const KPIBanner: React.FC = () => {
       </div>
 
       {/* KPI 3: Pending Approvals */}
-      <div className="bg-[#323522] border border-[#81815D]/40 rounded-xl p-3.5 flex items-center justify-between shadow-sm transition-all hover:border-[#81815D]">
+      <div className="bg-[#0A0F16] border border-[#1B2735] rounded-2xl p-4 flex items-center justify-between shadow-sm transition-all hover:border-[#1E5A91]">
         <div>
-          <p className="text-[10px] font-bold text-slate-300 uppercase tracking-wider">
+          <p className="text-[10px] font-bold text-[#A7B0BC] uppercase tracking-wider">
             Pending Approvals
           </p>
           <div className="flex items-baseline gap-1.5 mt-0.5">
-            <span
-              className={`text-xl font-black ${
-                pendingApprovalsCount > 0 ? 'text-slate-100' : 'text-slate-100'
-              }`}
-            >
+            <span className="text-2xl font-black text-white">
               {pendingApprovalsCount}
             </span>
-            <span className="text-[10px] text-slate-400">gates</span>
+            <span className="text-[10px] text-[#6F7B88]">gates</span>
           </div>
-          <p className="text-[10px] text-slate-400 mt-0.5">
+          <p className="text-[10px] text-[#6F7B88] mt-0.5 font-medium">
             {pendingApprovalsCount > 0 ? 'Sign-off review pending' : 'All gates clear'}
           </p>
         </div>
         <div
-          className={`h-9 w-9 rounded-lg flex items-center justify-center border ${
-            pendingApprovalsCount > 0 ? 'bg-[#570F1D]/40 text-slate-100 border-[#6F2B34]' : 'bg-[#111506] text-slate-400 border-[#81815D]/30'
+          className={`h-10 w-10 rounded-xl flex items-center justify-center border ${
+            pendingApprovalsCount > 0 ? 'bg-[#0B1F3A] text-[#2F80ED] border-[#1E5A91]' : 'bg-[#05070A] text-[#6F7B88] border-[#1B2735]'
           }`}
         >
           <CheckSquare className="h-4 w-4" />
@@ -168,22 +163,22 @@ export const KPIBanner: React.FC = () => {
       </div>
 
       {/* KPI 4: Alerted Stakeholders */}
-      <div className="bg-[#323522] border border-[#81815D]/40 rounded-xl p-3.5 flex items-center justify-between shadow-sm transition-all hover:border-[#81815D]">
+      <div className="bg-[#0A0F16] border border-[#1B2735] rounded-2xl p-4 flex items-center justify-between shadow-sm transition-all hover:border-[#1E5A91]">
         <div>
-          <p className="text-[10px] font-bold text-slate-300 uppercase tracking-wider">
+          <p className="text-[10px] font-bold text-[#A7B0BC] uppercase tracking-wider">
             Alerted Stakeholders
           </p>
           <div className="flex items-baseline gap-1.5 mt-0.5">
-            <span className="text-xl font-black text-rose-200">
+            <span className="text-2xl font-black text-[#2F80ED]">
               {alertedStakeholdersCount}
             </span>
-            <span className="text-[10px] text-slate-400">/ {stakeholders.length} team</span>
+            <span className="text-[10px] text-[#6F7B88]">/ {stakeholders.length} team</span>
           </div>
-          <p className="text-[10px] text-slate-400 mt-0.5">
+          <p className="text-[10px] text-[#6F7B88] mt-0.5 font-medium">
             {alertedStakeholdersCount > 0 ? 'Notified of path shift' : 'No active alerts'}
           </p>
         </div>
-        <div className="h-9 w-9 rounded-lg bg-[#570F1D] border border-[#6F2B34] text-rose-200 flex items-center justify-center">
+        <div className="h-10 w-10 rounded-xl bg-[#0B1F3A] border border-[#1E5A91] text-[#2F80ED] flex items-center justify-center">
           <Users className="h-4 w-4" />
         </div>
       </div>

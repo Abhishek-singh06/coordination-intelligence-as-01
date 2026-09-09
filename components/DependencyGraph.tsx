@@ -83,27 +83,27 @@ export const DependencyGraph: React.FC = () => {
   }, [tasks, dependencies]);
 
   return (
-    <div className="bg-[#323522] border border-[#81815D]/40 rounded-xl p-5 shadow-lg relative overflow-hidden">
+    <div className="bg-[#0A0F16] border border-[#1B2735] rounded-2xl p-5 shadow-xl relative overflow-hidden">
       {/* Header */}
-      <div className="flex items-center justify-between mb-4 border-b border-[#81815D]/30 pb-3">
+      <div className="flex items-center justify-between mb-4 border-b border-[#1B2735] pb-3">
         <div className="flex items-center gap-2">
-          <Layers className="h-5 w-5 text-rose-200" />
-          <h2 className="text-sm font-bold text-slate-100 uppercase tracking-wide">
+          <Layers className="h-5 w-5 text-[#2F80ED]" />
+          <h2 className="text-sm font-bold text-white uppercase tracking-wide font-sans">
             Dependency Graph & Flow DAG
           </h2>
         </div>
-        <div className="flex items-center gap-4 text-xs font-medium text-slate-300">
+        <div className="flex items-center gap-4 text-xs font-medium text-[#A7B0BC]">
           <span className="flex items-center gap-1.5">
             <span className="h-2 w-2 rounded-full bg-emerald-400"></span> Completed
           </span>
           <span className="flex items-center gap-1.5">
-            <span className="h-2 w-2 rounded-full bg-rose-200"></span> In Progress
+            <span className="h-2 w-2 rounded-full bg-[#2F80ED]"></span> In Progress
           </span>
           <span className="flex items-center gap-1.5">
-            <span className="h-2 w-2 rounded-full bg-rose-400"></span> Blocked
+            <span className="h-2 w-2 rounded-full bg-red-400"></span> Blocked
           </span>
           <span className="flex items-center gap-1.5">
-            <span className="h-2 w-2 rounded-full bg-[#81815D]"></span> Pending/Not Started
+            <span className="h-2 w-2 rounded-full bg-[#6F7B88]"></span> Pending/Not Started
           </span>
         </div>
       </div>
@@ -121,7 +121,7 @@ export const DependencyGraph: React.FC = () => {
               markerHeight="6"
               orient="auto-start-reverse"
             >
-              <path d="M 0 0 L 10 5 L 0 10 z" fill="#81815D" />
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="#1E5A91" />
             </marker>
             <marker
               id="arrow-blocked"
@@ -132,7 +132,7 @@ export const DependencyGraph: React.FC = () => {
               markerHeight="6"
               orient="auto-start-reverse"
             >
-              <path d="M 0 0 L 10 5 L 0 10 z" fill="#6F2B34" />
+              <path d="M 0 0 L 10 5 L 0 10 z" fill="#E53E3E" />
             </marker>
           </defs>
 
@@ -142,7 +142,7 @@ export const DependencyGraph: React.FC = () => {
                 key={line.id}
                 d={line.path}
                 fill="none"
-                stroke={line.isBlocked ? '#6F2B34' : '#81815D'}
+                stroke={line.isBlocked ? '#E53E3E' : '#1E5A91'}
                 strokeWidth={line.isBlocked ? '2.5' : '1.5'}
                 strokeDasharray={line.isBlocked ? '6 4' : undefined}
                 markerEnd={line.isBlocked ? 'url(#arrow-blocked)' : 'url(#arrow-normal)'}
@@ -156,7 +156,7 @@ export const DependencyGraph: React.FC = () => {
             const colTasks = tasks.filter((t) => t.gridCol === col.col);
             return (
               <div key={col.col} className="flex flex-col gap-4">
-                <div className="text-[11px] font-bold text-slate-300 uppercase tracking-wider bg-[#111506]/70 px-2.5 py-1.5 rounded-md border border-[#81815D]/30 text-center font-mono">
+                <div className="text-[11px] font-bold text-[#A7B0BC] uppercase tracking-wider bg-[#05070A] px-2.5 py-1.5 rounded-lg border border-[#1B2735] text-center font-mono">
                   {col.title}
                 </div>
                 <div className="flex flex-col gap-4 justify-around min-h-[380px]">

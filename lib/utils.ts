@@ -30,25 +30,25 @@ export function formatRoleName(role: StakeholderRole): string {
 export function getStatusBadgeClass(status: TaskStatus): string {
   switch (status) {
     case 'COMPLETED':
-      return 'bg-[#323522] text-emerald-400 border-[#81815D]/40';
+      return 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30';
     case 'IN_PROGRESS':
-      return 'bg-[#570F1D]/40 text-rose-200 border-[#6F2B34]';
+      return 'bg-[#123B66]/60 text-[#2F80ED] border-[#1E5A91]';
     case 'BLOCKED':
-      return 'bg-[#340A0E] text-rose-300 border-[#6F2B34] animate-pulse-subtle';
+      return 'bg-[#3A0B0E] text-red-400 border-red-500/40 animate-pulse-subtle';
     case 'PENDING_APPROVAL':
-      return 'bg-[#323522] text-slate-100 border-[#81815D]/50';
+      return 'bg-[#0B1F3A] text-slate-100 border-[#1B2735]';
     case 'NOT_STARTED':
-      return 'bg-[#111506] text-slate-400 border-[#323522]';
+      return 'bg-[#0A0F16] text-[#A7B0BC] border-[#1B2735]';
   }
 }
 
 export function getSeverityBadgeClass(severity: AuditSeverity): string {
   switch (severity) {
     case 'CRITICAL':
-      return 'bg-[#340A0E] text-rose-300 border-[#6F2B34]';
+      return 'bg-[#3A0B0E] text-red-400 border-red-500/40';
     case 'WARNING':
-      return 'bg-[#570F1D]/50 text-slate-200 border-[#81815D]';
+      return 'bg-[#123B66]/60 text-slate-200 border-[#1E5A91]';
     case 'INFO':
-      return 'bg-[#323522] text-slate-300 border-[#81815D]/40';
+      return 'bg-[#0B1F3A] text-slate-300 border-[#1B2735]';
   }
 }
